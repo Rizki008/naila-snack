@@ -408,8 +408,6 @@ class Master_produk extends CI_Controller
 			$data = array(
 				'title' => 'Create Diskon',
 				'produk' => $this->m_master_produk->produk_diskon(),
-				'grafik_member' => $this->m_transaksi->grafik_pelanggan_member(),
-				'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
 				'diskon' => $this->m_master_produk->edit_diskon($id),
 				'isi' => 'backend/diskon/v_edit'
 			);

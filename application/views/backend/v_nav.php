@@ -74,7 +74,7 @@
 						</p>
 					</a>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a href="<?= base_url('rekening') ?>" class="nav-link <?php if (
 																				$this->uri->segment(1) == 'rekening'
 																			) {
@@ -85,8 +85,20 @@
 							Rekening Toko
 						</p>
 					</a>
-				</li>
+				</li> -->
 
+				<li class="nav-item">
+					<a href="<?= base_url('master_produk/diskon') ?>" class="nav-link <?php if (
+																							$this->uri->segment(1) == 'diskon'
+																						) {
+																							echo "active";
+																						} ?>">
+						<i class="nav-icon fas fa-address-book"></i>
+						<p>
+							Diskon Produk
+						</p>
+					</a>
+				</li>
 				<li class="nav-item">
 					<a href="<?= base_url('transaksi') ?>" class="nav-link <?php if (
 																				$this->uri->segment(2) == 'transaksi' and $this->uri->segment(1) == 'admin'

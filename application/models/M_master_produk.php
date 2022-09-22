@@ -115,9 +115,8 @@ class M_master_produk extends CI_Model
 		$this->db->select('*');
 		$this->db->from('produk');
 		$this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
-		$this->db->join('size', 'produk.id_produk = size.id_produk', 'left');
 		$this->db->order_by('produk.id_produk', 'desc');
-		$this->db->group_by('size.id_size');
+		$this->db->group_by('produk.id_produk');
 		return $this->db->get()->result();
 	}
 	public function diskon_add($id, $level, $data)
@@ -135,7 +134,6 @@ class M_master_produk extends CI_Model
 		$this->db->select('*');
 		$this->db->from('diskon');
 		$this->db->join('produk', 'diskon.id_produk = produk.id_produk', 'left');
-		$this->db->join('size', 'produk.id_produk = size.id_produk', 'left');
 		$this->db->where('id_diskon', $id);
 		return $this->db->get()->row();
 	}

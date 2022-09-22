@@ -67,6 +67,16 @@
 	});
 </script>
 
+
+<script>
+	console.log = function() {}
+	$("#produk-diskon").on('change', function() {
+
+		$(".harga").html($(this).find(':selected').attr('data-harga'));
+		$(".harga").val($(this).find(':selected').attr('data-harga'));
+	});
+</script>
+
 </body>
 
 </html>
