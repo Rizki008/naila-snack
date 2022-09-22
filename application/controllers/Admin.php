@@ -29,20 +29,53 @@ class Admin extends CI_Controller
         );
         $this->load->view('backend/v_wrapper', $data, FALSE);
     }
+    // List all your items
+    public function user($offset = 0)
+    {
+        $data = array(
+            'title' => 'Data User',
+            'user' => $this->m_admin->get_all_data(),
+            'isi' => 'backend/user/v_user'
+        );
+        $this->load->view('backend/v_wrapper', $data, FALSE);
+    }
 
     // Add a new item
-    public function add()
+    public function add_user()
     {
+        $data = array(
+            'nama' => $this->input->post('nama'),
+            'username' => $this->input->post('username'),
+            'password' => $this->input->post('password'),
+            'level' => $this->input->post('level'),
+        );
+        $this->m_admin->add_user($data);
+        $this->session->set_flashdata('pesan', 'Data Berhasil Ditambahkan !!!');
+        redirect('admin/user');
     }
 
     //Update one item
-    public function update($id = NULL)
+    public function edit_user($id_user = NULL)
     {
+        $data = array(
+            'id_user' => $id_user,
+            'nama' => $this->input->post('nama'),
+            'username' => $this->input->post('username'),
+            'password' => $this->input->post('password'),
+            'level' => $this->input->post('level'),
+        );
+        $this->m_admin->edit_user($data);
+        $this->session->set_flashdata('pesan', 'Data Berhasil Diedit !!!');
+        redirect('admin/user');
     }
 
     //Delete one item
-    public function delete($id = NULL)
+    public function delete_user($id_user = NULL)
     {
+        $data = array('id_user' => $id_user);
+        $this->m_admin->delete_user($data);
+        $this->session->set_flashdata('pesan', 'Data Berhasil Dihapus !!!');
+        redirect('admin/user');
     }
 }
 

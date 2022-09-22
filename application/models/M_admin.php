@@ -62,6 +62,33 @@ class M_admin extends CI_Model
         $this->db->where('status_order=3');
         return $this->db->get('transaksi')->num_rows();
     }
+
+    //data user
+    public function get_all_data()
+    {
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->order_by('id_user', 'desc');
+        return $this->db->get()->result();
+    }
+
+
+    public function add_user($data)
+    {
+        $this->db->insert('user', $data);
+    }
+
+    public function edit_user($data)
+    {
+        $this->db->where('id_user', $data['id_user']);
+        $this->db->update('user', $data);
+    }
+
+    public function delete_user($data)
+    {
+        $this->db->where('id_user', $data['id_user']);
+        $this->db->delete('user', $data);
+    }
 }
 
 /* End of file M_admin.php */

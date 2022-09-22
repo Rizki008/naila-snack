@@ -37,12 +37,12 @@
                     foreach ($user as $key => $value) { ?>
                         <tr class="text-center">
                             <td><?= $no++; ?></td>
-                            <td><?= $value->nama_user ?></td>
+                            <td><?= $value->nama ?></td>
                             <!--<td><?= $value->nama_pelanggan ?></td>-->
                             <td><?= $value->username ?></td>
                             <td><?= $value->password ?></td>
                             <td><?php
-                                if ($value->level_user == 1) {
+                                if ($value->level == 1) {
                                     echo '<span class="badge bg-danger">Admin</span>';
                                 } else {
                                     echo '<span class="badge bg-success">User</span>';
@@ -62,55 +62,6 @@
     <!-- /.card -->
 </div>
 
-<!--
-<div class="col-md-12">
-    <div class="card card-primary">
-        <div class="card-header">
-            <h3 class="card-title">Data Pelanggan</h3>
-            <!-- /.card-tools 
-</div>
-<!-- /.card-header 
-<div class="card-body">
-    <?php
-    if ($this->session->flashdata('pesan')) {
-        echo '<div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h5><i class="icon fas fa-check"></i>';
-        echo $this->session->flashdata('pesan');
-        echo '</h5></div>';
-    }
-    ?>
-    <table class="table table-bordered" id="example1">
-        <thead class="text-center">
-            <tr>
-                <th>No</th>
-                <th>Nama Pelanggan</th>
-                <th>Email</th>
-                <th>No Telppon</th>
-                <th>Jenis Kelamin</th>
-                <th>Alamat</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $no = 1;
-            foreach ($user as $key => $value) { ?>
-                <tr class="text-center">
-                    <td><?= $no++; ?></td>
-                    <td><?= $value->nama_pelanggan ?></td>
-                    <td><?= $value->email ?></td>
-                    <td><?= $value->no_telpon ?></td>
-                    <td><?= $value->jenis_kel ?></td>
-                    <td><?= $value->alamat ?></td>
-                </tr>
-
-            <?php } ?>
-        </tbody>
-    </table>
-</div>
-<!-- /.card-body 
-</div>
-<!-- /.card 
-</div>-->
 
 <!-- /.modal Add -->
 <div class="modal fade" id="add">
@@ -124,12 +75,12 @@
             </div>
             <div class="modal-body">
                 <?php
-                echo form_open('user/add');
+                echo form_open('admin/add_user');
                 ?>
 
                 <div class="form-group">
                     <label>Nama User</label>
-                    <input type="text" name="nama_user" class="form-control" placeholder="Nama User" required>
+                    <input type="text" name="nama" class="form-control" placeholder="Nama User" required>
                 </div>
 
                 <div class="form-group">
@@ -144,7 +95,7 @@
 
                 <div class="form-group">
                     <label>Level User</label>
-                    <select name="level_user" class="form-control">
+                    <select name="level" class="form-control">
                         <option value="1" selected>Admin</option>
                         <option value="2">User</option>
                     </select>
@@ -178,12 +129,12 @@
                 </div>
                 <div class="modal-body">
                     <?php
-                    echo form_open('user/edit/' . $value->id_user);
+                    echo form_open('admin/edit_user/' . $value->id_user);
                     ?>
 
                     <div class="form-group">
                         <label>Nama User</label>
-                        <input type="text" name="nama_user" value="<?= $value->nama_user ?>" class="form-control" placeholder="Nama User" required>
+                        <input type="text" name="nama" value="<?= $value->nama ?>" class="form-control" placeholder="Nama User" required>
                     </div>
 
                     <div class="form-group">
@@ -198,17 +149,15 @@
 
                     <div class="form-group">
                         <label>Level User</label>
-                        <select name="level_user" class="form-control">
-                            <option value="1" <?php if ($value->level_user == 1) {
+                        <select name="level" class="form-control">
+                            <option value="1" <?php if ($value->level == 1) {
                                                     echo 'selected';
                                                 } ?>>Admin</option>
-                            <option value="2" <?php if ($value->level_user == 2) {
+                            <option value="2" <?php if ($value->level == 2) {
                                                     echo 'selected';
                                                 } ?>>User</option>
                         </select>
                     </div>
-
-
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -232,7 +181,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete <?= $value->nama_user ?></h4>
+                    <h4 class="modal-title">Delete <?= $value->nama ?></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -242,7 +191,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <a href="<?= base_url('user/delete/' . $value->id_user) ?> " class="btn btn-primary">Delete</a>
+                    <a href="<?= base_url('admin/delete_user/' . $value->id_user) ?> " class="btn btn-primary">Delete</a>
                 </div>
             </div>
             <!-- /.modal-content -->
