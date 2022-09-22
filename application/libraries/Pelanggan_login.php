@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Warga_login
+class Pelanggan_login
 {
     protected $ci;
     public function __construct()
@@ -11,49 +11,52 @@ class Warga_login
         $this->ci->load->model('m_auth');
     }
 
-    public function login($username, $password)
+    public function login($email, $password)
     {
-        $cek = $this->ci->m_auth->warga_login($username, $password);
+        $cek = $this->ci->m_auth->pelanggan_login($email, $password);
         if ($cek) {
-            $id_warga = $cek->id_warga;
-            $username = $cek->username;
-            $nama_lengkap = $cek->nama_lengkap;
+            $id_pelanggan = $cek->id_pelanggan;
+            $nama_pelanggan = $cek->nama_pelanggan;
+            $jenis_kelamin = $cek->jenis_kelamin;
             $no_tlpn = $cek->no_tlpn;
             $alamat = $cek->alamat;
             $password = $cek->password;
-            $jenis_kel = $cek->jenis_kel;
-            $usia = $cek->usia;
+            $kode_post = $cek->kode_post;
+            $email = $cek->email;
 
-            $this->ci->session->set_userdata('id_warga', $id_warga);
-            $this->ci->session->set_userdata('nama_lengkap', $nama_lengkap);
-            $this->ci->session->set_userdata('username', $username);
+            $this->ci->session->set_userdata('id_pelanggan', $id_pelanggan);
+            $this->ci->session->set_userdata('jenis_kelamin', $jenis_kelamin);
+            $this->ci->session->set_userdata('nama_pelanggan', $nama_pelanggan);
             $this->ci->session->set_userdata('password', $password);
-            $this->ci->session->set_userdata('jenis_kel', $jenis_kel);
-            $this->ci->session->set_userdata('usia', $usia);
+            $this->ci->session->set_userdata('kode_post', $kode_post);
+            $this->ci->session->set_userdata('email', $email);
             $this->ci->session->set_userdata('no_tlpn', $no_tlpn);
             $this->ci->session->set_userdata('alamat', $alamat);
 
             redirect('home');
         } else {
-            $this->ci->session->set_flashdata('pesan', 'Username atau Password Salah');
-            redirect('warga/login');
+            $this->ci->session->set_flashdata('error', 'nama_pelanggan atau Password Salah');
+            redirect('pelanggan/login');
         }
     }
 
     public function proteksi_halaman()
     {
-        if ($this->ci->session->userdata('username') == '') {
-            $this->ci->session->set_flashdata('pesan', 'Maaf Anda Belum Login / Register');
-            redirect('warga/login');
+        if ($this->ci->session->userdata('email') == '') {
+            $this->ci->session->set_flashdata('error', 'Maaf Anda Belum Login / Register');
+            redirect('pelanggan/login');
         }
     }
 
     public function logout()
     {
-        $this->ci->session->unset_userdata('username');
+        $this->ci->session->unset_userdata('nama_pelanggan');
         $this->ci->session->unset_userdata('password');
-        $this->ci->session->unset_userdata('jenis_kl');
-        $this->ci->session->unset_userdata('usia');
+        $this->ci->session->unset_userdata('jenis_kelamin');
+        $this->ci->session->unset_userdata('email');
+        $this->ci->session->unset_userdata('kode_post');
+        $this->ci->session->unset_userdata('no_tlpn');
+        $this->ci->session->unset_userdata('alamat');
 
         $this->ci->session->set_flashdata('pesan', 'Berhasil Logout');
         redirect('warga/login');

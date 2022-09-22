@@ -17,10 +17,12 @@ class User_login
         $cek = $this->ci->m_auth->user_login($username, $password);
 
         if ($cek) {
+            $nama = $cek->nama;
             $username = $cek->username;
             $password = $cek->password;
             $level = $cek->level;
 
+            $this->ci->session->set_userdata('nama', $nama);
             $this->ci->session->set_userdata('username', $username);
             $this->ci->session->set_userdata('password', $password);
             $this->ci->session->set_userdata('level', $level);
@@ -30,7 +32,7 @@ class User_login
             if ($level == 1) {
                 redirect('admin');
             } elseif ($level == 2) {
-                redirect('admin/yayasan');
+                redirect('admin/pemilik');
             }
         } else {
             $this->ci->session->set_flashdata('error', 'Username Atau Password Salah');
@@ -48,6 +50,7 @@ class User_login
 
     public function logout()
     {
+        $this->ci->session->unset_userdata('nama');
         $this->ci->session->unset_userdata('username');
         $this->ci->session->unset_userdata('password');
         $this->ci->session->unset_userdata('level');
