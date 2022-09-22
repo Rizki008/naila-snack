@@ -89,6 +89,35 @@ class M_admin extends CI_Model
         $this->db->where('id_user', $data['id_user']);
         $this->db->delete('user', $data);
     }
+
+    //grafik
+    public function grafik()
+    {
+        $this->db->select_sum('qty');
+        $this->db->select('produk.nama_produk');
+        //$this->db->select('rinci_transaksi.qty');
+        $this->db->from('rinci_transaksi');
+        $this->db->join('produk', 'rinci_transaksi.id_produk = produk.id_produk', 'left');
+        $this->db->group_by('rinci_transaksi.id_produk');
+        $this->db->order_by('qty', 'desc');
+        return $this->db->get()->result();
+    }
+    //grafik
+    public function grafik_pelanggan()
+    {
+
+        // return $this->db->query("SELECT COUNT(transaksi.no_order) as qty, nama, month(tgl_order) FROM transaksi JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan GROUP BY transaksi.id_pelanggan")->result();
+        $this->db->select_sum('qty');
+        $this->db->select('pelanggan.nama_pelanggan');
+        $this->db->select('rinci_transaksi.qty');
+        $this->db->from('rinci_transaksi');
+        $this->db->join('produk', 'rinci_transaksi.id_produk = produk.id_produk', 'left');
+        $this->db->join('transaksi', 'rinci_transaksi.no_order = transaksi.no_order', 'left');
+        $this->db->join('pelanggan', 'transaksi.id_pelanggan = pelanggan.id_pelanggan', 'left');
+        $this->db->group_by('pelanggan.id_pelanggan');
+        $this->db->order_by('qty', 'desc');
+        return $this->db->get()->result();
+    }
 }
 
 /* End of file M_admin.php */

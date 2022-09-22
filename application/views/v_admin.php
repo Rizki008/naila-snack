@@ -89,7 +89,7 @@
                     <script>
                         var ctx = document.getElementById('myChart');
                         var myChart = new Chart(ctx, {
-                            type: 'bar',
+                            type: 'pie',
                             data: {
                                 labels: <?= json_encode($nama_produk) ?>,
                                 datasets: [{
@@ -191,7 +191,7 @@
 
                     <?php
                     foreach ($grafik_pelanggan as $key => $value) {
-                        $nama[] = $value->nama;
+                        $nama_pelanggan[] = $value->nama_pelanggan;
                         $jml[] = $value->qty;
                     }
                     ?>
@@ -202,7 +202,7 @@
                         var myChartsa = new Chart(ctx, {
                             type: 'bar',
                             data: {
-                                labels: <?= json_encode($nama) ?>,
+                                labels: <?= json_encode($nama_pelanggan) ?>,
                                 datasets: [{
                                     label: 'Grafik Analisis Pelanggan',
                                     data: <?= json_encode($qty) ?>,
