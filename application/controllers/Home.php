@@ -44,6 +44,31 @@ class Home extends CI_Controller
         $this->load->view('frontend/v_wrapper', $data, FALSE);
     }
 
+    public function shop()
+    {
+        $data = array(
+            'title' => 'Detail Produk',
+            'diskon' => $this->m_home->diskon(),
+            'produk_lates' => $this->m_home->produk_lates(),
+            'produk' => $this->m_home->produk(),
+            'isi' => 'frontend/detail/v_shop'
+        );
+        $this->load->view('frontend/v_wrapper', $data, FALSE);
+    }
+
+    public function pencarian()
+    {
+        $keyword = $this->input->get('keyword');
+        $data = array(
+            'keyword' => $keyword,
+            'diskon' => $this->m_home->diskon(),
+            'produk_lates' => $this->m_home->produk_lates(),
+            'pencarian' => $this->m_home->pencarian(),
+            'isi' => 'frontend/detail/v_pencarian'
+        );
+        $this->load->view('frontend/v_wrapper', $data, FALSE);
+    }
+
     // public function kategori($id_kategori)
     // {
     //     $kategori = $this->m_home->kategori($id_kategori);

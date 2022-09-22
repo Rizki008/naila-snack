@@ -119,11 +119,18 @@ class M_transaksi extends CI_Model
         return $this->db->query("SELECT * FROM `transaksi` JOIN rinci_transaksi ON transaksi.no_order=rinci_transaksi.no_order JOIN produk ON rinci_transaksi.id_produk=produk.id_produk JOIN size ON produk.id_produk=size.id_produk WHERE transaksi.no_order='" . $no_order . "'")->result();
     }
 
+    public function detail_pesanan_bayar($id_transaksi)
+    {
+        $this->db->select('*');
+        $this->db->from('transaksi');
+        $this->db->where('id_transaksi', $id_transaksi);
+        return $this->db->get()->row();
+    }
 
     public function detail_pesanan($id)
     {
         $data['transaksi'] = $this->db->query("SELECT * FROM transaksi JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan  WHERE transaksi.id_transaksi='" . $id . "'")->row();
-        $data['pesanan'] = $this->db->query("SELECT * FROM rinci_transaksi JOIN transaksi ON rinci_transaksi.no_order=transaksi.no_order JOIN produk ON produk.id_produk=rinci_transaksi.id_produk JOIN diskon ON produk.id_produk=diskon.id_produk JOIN riview ON rinci_transaksi.id_rinci = riview.id_rinci WHERE transaksi.id_transaksi='" . $id . "'")->result();
+        $data['pesanan'] = $this->db->query("SELECT * FROM rinci_transaksi JOIN transaksi ON rinci_transaksi.no_order=transaksi.no_order JOIN produk ON produk.id_produk=rinci_transaksi.id_produk JOIN diskon ON produk.id_produk=diskon.id_produk JOIN riview ON rinci_transaksi.id_rinci = riview.id_rinci WHERE transaksi.id_transaksi='" . $id . "' GROUP BY transaksi.id_transaksi")->result();
         return $data;
     }
 

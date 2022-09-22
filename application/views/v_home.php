@@ -20,9 +20,13 @@
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
+                        <form action="<?= base_url('home/pencarian') ?>" method="get">
+                            <!-- <div class="hero__search__categories">
+                                All Categories
+                                <span class="arrow_carrot-down"></span>
+                            </div> -->
+                            <input type="text" name="keyword" placeholder="What do yo u need?">
+                            <button type="submit" value="cari" class="site-btn">SEARCH</button>
                         </form>
                     </div>
                     <div class="hero__search__phone">
@@ -116,7 +120,7 @@
 <!-- Featured Section End -->
 
 <!-- Banner Begin -->
-<div class="banner">
+<!-- <div class="banner">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -131,7 +135,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Banner End -->
 
 <!-- Latest Product Section Begin -->
@@ -183,7 +187,7 @@
                     <h4>Diskon Products</h4>
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
-                            <?php foreach ($diskon as $key => $value) { ?>
+                            <?php foreach ($diskon as $key => $prodis) { ?>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="<?= base_url('assets/produk/' . $prodis->images) ?>" alt="">

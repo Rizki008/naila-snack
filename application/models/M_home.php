@@ -57,6 +57,21 @@ class M_home extends CI_Model
         return $this->db->get()->result();
     }
 
+    //pencarian produk
+
+    public function pencarian($data = null)
+    {
+        $this->db->select('*');
+        $this->db->from('produk');
+        if (!empty($data)) {
+            $this->db->like('nama_produk', $data);
+        }
+        $this->db->join('diskon', 'produk.id_produk = diskon.id_produk', 'left');
+        $this->db->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left');
+        $this->db->order_by('produk.id_produk', 'desc');
+        return $this->db->get()->result();
+    }
+
     public function kategori($id_kategori)
     {
         $this->db->select('*');

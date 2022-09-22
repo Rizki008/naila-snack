@@ -11,7 +11,7 @@
                     <?php $kategori = $this->m_home->kategori_produk(); ?>
                     <?php foreach ($kategori as $key => $value) { ?>
                         <ul>
-                            <li><a href="#"><?= $value->nama_kategori ?></a></li>
+                            <li><a href="<?= base_url('/home/kategori/' . $value->id_kategori) ?>"><?= $value->nama_kategori ?></a></li>
                         </ul>
                     <?php } ?>
                 </div>
@@ -19,13 +19,13 @@
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
+                        <form action="<?= base_url('home/pencarian') ?>" method="get">
                             <!-- <div class="hero__search__categories">
                                 All Categories
                                 <span class="arrow_carrot-down"></span>
                             </div> -->
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
+                            <input type="text" name="keyword" placeholder="What do yo u need?">
+                            <button type="submit" value="cari" class="site-btn">SEARCH</button>
                         </form>
                     </div>
                     <div class="hero__search__phone">

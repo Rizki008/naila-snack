@@ -19,13 +19,13 @@
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
+                        <form action="<?= base_url('home/pencarian') ?>" method="get">
                             <!-- <div class="hero__search__categories">
                                 All Categories
                                 <span class="arrow_carrot-down"></span>
                             </div> -->
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
+                            <input type="text" name="keyword" placeholder="What do yo u need?">
+                            <button type="submit" value="cari" class="site-btn">SEARCH</button>
                         </form>
                     </div>
                     <div class="hero__search__phone">
@@ -106,9 +106,21 @@
                         <p class="text-danger">Bank BRI. 0123-343-1233-02-1</p>
 
                         <?php
+                        echo validation_errors('<div class="alert alert-warning alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h5><i class="icon fa fa-exclamation-triangle"></i>', '</h5></div>');
+
+                        //notifikasi gagal upload gambar
+                        if (isset($error_upload)) {
+                            echo '<div class="alert alert-warning alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fa fa-exclamation-triangle"></i>' . $error_upload . '</h5></div>';
+                        }
                         echo form_open_multipart('pesanan_saya/bayar/' . $detail['transaksi']->id_transaksi) ?>
                         <label>Upload Bukti Pembayaran</label>
-                        <input type="file" name="gambar" class="form-control">
+                        <input type="file" class="form-control" name="bukti_bayar">
+                        <label>Nama Bank</label>
+                        <input type="text" class="form-control" name="nama_bank" value="<?= set_value('nama_bank') ?>">
                         <button type="submit" class="site-btn mt-3 mb-3">Kirim</button>
                         <?php echo form_close() ?>
                     <?php

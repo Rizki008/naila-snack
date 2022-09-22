@@ -59,6 +59,6 @@ class Pelanggan_login
         $this->ci->session->unset_userdata('alamat');
 
         $this->ci->session->set_flashdata('pesan', 'Berhasil Logout');
-        redirect('warga/login');
+        redirect('pelanggan/login');
     }
 }

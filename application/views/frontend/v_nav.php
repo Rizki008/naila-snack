@@ -91,7 +91,7 @@
                             <?php if ($this->session->userdata('email') == "") { ?>
                                 <a href="<?= base_url('pelanggan/login') ?>"><i class="fa fa-user"></i> Login</a>
                             <?php } else { ?>
-                                <a href="<?= base_url() ?>"><i class="fa fa-user"></i> <?= $this->session->userdata('nama_pelanggan'); ?></a>
+                                <a href="<?= base_url('pelanggan/logout') ?>"><i class="fa fa-user"></i> <?= $this->session->userdata('nama_pelanggan'); ?></a>
                             <?php } ?>
                         </div>
                     </div>
@@ -110,8 +110,8 @@
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="<?= base_url() ?>">Home</a></li>
-                        <li><a href="./shop-grid.html">Shop</a></li>
-                        <li><a href="#">Pages</a>
+                        <li><a href="<?= base_url('home/shop') ?>">Shop</a></li>
+                        <!-- <li><a href="#">Pages</a>
                             <ul class="header__menu__dropdown">
                                 <li><a href="./shop-details.html">Shop Details</a></li>
                                 <li><a href="./shoping-cart.html">Shoping Cart</a></li>
@@ -119,8 +119,12 @@
                                 <li><a href="./blog-details.html">Blog Details</a></li>
                             </ul>
                         </li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="./blog.html">Blog</a></li>-->
+                        <?php if ($this->session->userdata('email') == "") { ?>
+                            <!-- <li><a href="<?= base_url('pesanan_saya') ?>">Pesanan Saya</a></li> -->
+                        <?php } else { ?>
+                            <li><a href="<?= base_url('pesanan_saya') ?>">Pesanan Saya</a></li>
+                        <?php } ?>
                     </ul>
                 </nav>
             </div>

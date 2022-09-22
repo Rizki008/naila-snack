@@ -8,31 +8,24 @@
                         <i class="fa fa-bars"></i>
                         <span>All departments</span>
                     </div>
+                    <?php $kategori = $this->m_home->kategori_produk(); ?>
                     <ul>
-                        <li><a href="#">Fresh Meat</a></li>
-                        <li><a href="#">Vegetables</a></li>
-                        <li><a href="#">Fruit & Nut Gifts</a></li>
-                        <li><a href="#">Fresh Berries</a></li>
-                        <li><a href="#">Ocean Foods</a></li>
-                        <li><a href="#">Butter & Eggs</a></li>
-                        <li><a href="#">Fastfood</a></li>
-                        <li><a href="#">Fresh Onion</a></li>
-                        <li><a href="#">Papayaya & Crisps</a></li>
-                        <li><a href="#">Oatmeal</a></li>
-                        <li><a href="#">Fresh Bananas</a></li>
+                        <?php foreach ($kategori as $key => $value) { ?>
+                            <li><a href="<?= base_url('/home/kategori/' . $value->id_kategori) ?>"><?= $value->nama_kategori ?></a></li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
-                            <div class="hero__search__categories">
+                        <form action="<?= base_url('home/pencarian') ?>" method="get">
+                            <!-- <div class="hero__search__categories">
                                 All Categories
                                 <span class="arrow_carrot-down"></span>
-                            </div>
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
+                            </div> -->
+                            <input type="text" name="keyword" placeholder="What do yo u need?">
+                            <button type="submit" value="cari" class="site-btn">SEARCH</button>
                         </form>
                     </div>
                     <div class="hero__search__phone">

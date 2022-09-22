@@ -12,6 +12,8 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/rating/') ?>css/star-rating.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/rating/') ?>css/bootstrap.css">
     <!-- Css Styles -->
     <link rel="stylesheet" href="<?= base_url() ?>ogani-master/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="<?= base_url() ?>ogani-master/css/font-awesome.min.css" type="text/css">
