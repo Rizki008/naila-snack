@@ -88,11 +88,11 @@
 				</li>
 
 				<li class="nav-item">
-					<a href="<?= base_url('admin/pesanan_masuk') ?>" class="nav-link <?php if (
-																							$this->uri->segment(2) == 'pesanan_masuk' and $this->uri->segment(1) == 'admin'
-																						) {
-																							echo "active";
-																						} ?>">
+					<a href="<?= base_url('transaksi') ?>" class="nav-link <?php if (
+																				$this->uri->segment(2) == 'transaksi' and $this->uri->segment(1) == 'admin'
+																			) {
+																				echo "active";
+																			} ?>">
 						<i class="nav-icon fas fa-money-check-alt"></i>
 						<p>
 							Transaksi

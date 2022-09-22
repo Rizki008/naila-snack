@@ -19,7 +19,7 @@
 					<?php
 					foreach ($pesanan_detail as $key => $value) { ?>
 						<tr>
-							<td><img src="<?= base_url('assets/gambar/' . $value->gambar) ?>" width="150px"></td>
+							<td><img src="<?= base_url('assets/produk/' . $value->images) ?>" width="150px"></td>
 							<td><?= $value->nama_produk ?></td>
 							<td><?= $value->qty ?></td>
 							<td>Rp. <?= number_format($value->harga, 0) ?></td>
@@ -48,7 +48,7 @@
 
 					<tr>
 						<td>Nama Penerima</td>
-						<td><?= $value->nama ?></td>
+						<td><?= $value->nama_pelanggan ?></td>
 					</tr>
 					<tr>
 						<td>No Hp</td>
@@ -82,7 +82,7 @@
 						<td>Rp. <?= number_format($value->grand_total, 0) ?></td>
 						<td><span class="badge badge-primary">Dikemas</span></td>
 						<td class="form-group">
-							<a href="<?= base_url('admin/pesanan_masuk') ?>" class="btn btn-warning btn-sm">Kembali</a>
+							<a href="<?= base_url('transaksi') ?>" class="btn btn-warning btn-sm">Kembali</a>
 							<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#kirim<?= $value->id_transaksi ?>"><i class=" fa fa-paper-plane">Kirim</i> </button>
 						</td>
 					</tr>

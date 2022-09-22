@@ -17,17 +17,21 @@
 					<a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Pesanan masuk</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Diproses</a>
+					<a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Pembayaran</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">Dikirim</a>
+					<a class="nav-link" id="custom-tabs-three-messages-tab" data-toggle="pill" href="#custom-tabs-three-messages" role="tab" aria-controls="custom-tabs-three-messages" aria-selected="false">Diproses</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" id="custom-tabs-three-coesa-tab" data-toggle="pill" href="#custom-tabs-three-coesa" role="tab" aria-controls="custom-tabs-three-coesa" aria-selected="false">Dikirim</a>
+				</li>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" id="custom-tabs-three-settings-tab" data-toggle="pill" href="#custom-tabs-three-settings" role="tab" aria-controls="custom-tabs-three-settings" aria-selected="false">Selesai</a>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a class="nav-link" id="custom-tabs-three-activity-tab" data-toggle="pill" href="#custom-tabs-three-activity" role="tab" aria-controls="custom-tabs-three-activity" aria-selected="false">Dibatalkan</a>
-				</li>
+				</li> -->
 			</ul>
 		</div>
 		<div class="card-body">
@@ -39,11 +43,10 @@
 							<th>No Order</th>
 							<th>Tanggal Order</th>
 							<th>Total Bayar</th>
-							<th>Action</th>
 						</tr>
-						<?php foreach ($pesanan as $key => $value) { ?>
+						<?php foreach ($pesanan_masuk as $key => $value) { ?>
 							<tr>
-								<td><?= $value->nama ?></td>
+								<td><?= $value->nama_pelanggan ?></td>
 								<td>
 									<?= $value->no_order ?></a>
 								</td>
@@ -56,17 +59,6 @@
 									<?php } else { ?>
 										<span class="badge badge-success">Sudah bayar</span><br>
 										<span class="badge badge-primary">Menunggu Verifikasi</span>
-									<?php }
-									if ($value->pembayaran == 1) { ?>
-										<span class="badge badge-warning">Bayar Ditampat</span>
-									<?php } ?>
-								</td>
-								<td>
-									<?php if ($value->status_bayar == 1) { ?>
-										<button class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#cek<?= $value->id_transaksi ?>">Bukti Bayar</button>
-										<a href=" <?= base_url('admin/proses/' . $value->id_transaksi) ?>" class="btn btn-sm btn-flat btn-primary">Verifikasi</a>
-									<?php } elseif ($value->pembayaran == 1) { ?>
-										<a href=" <?= base_url('admin/proses/' . $value->id_transaksi) ?>" class="btn btn-sm btn-flat btn-primary">Verifikasi</a>
 									<?php } ?>
 								</td>
 							</tr>
@@ -82,10 +74,11 @@
 							<th>No Order</th>
 							<th>Tanggal Order</th>
 							<th>Total Bayar</th>
+							<th>Action</th>
 						</tr>
-						<?php foreach ($pesanan_diproses as $key => $value) { ?>
+						<?php foreach ($pesanan as $key => $value) { ?>
 							<tr>
-								<td><?= $value->nama ?></td>
+								<td><?= $value->nama_pelanggan ?></td>
 								<td><a href="<?= base_url('admin/detail/' . $value->no_order) ?>"><?= $value->no_order ?></a></td>
 								<td><?= $value->tgl_order ?></td>
 								<td>
@@ -94,13 +87,50 @@
 									<span class="badge badge-primary">Dikemas</span>
 
 								</td>
+								<td>
+									<?php if ($value->status_bayar == 1) { ?>
+										<button class="btn btn-sm btn-success btn-flat" data-toggle="modal" data-target="#cek<?= $value->id_transaksi ?>">Bukti Bayar</button>
+										<a href=" <?= base_url('transaksi/proses/' . $value->id_transaksi) ?>" class="btn btn-sm btn-flat btn-primary">Verifikasi</a>
+									<?php } elseif ($value->pembayaran == 1) { ?>
+										<a href=" <?= base_url('transaksi/proses/' . $value->id_transaksi) ?>" class="btn btn-sm btn-flat btn-primary">Verifikasi</a>
+									<?php } ?>
+								</td>
 							</tr>
 						<?php } ?>
-
 					</table>
 				</div>
 
 				<div class="tab-pane fade" id="custom-tabs-three-messages" role="tabpanel" aria-labelledby="custom-tabs-three-messages-tab">
+					<table class="table">
+						<tr>
+							<th>Nama Pelanggan</th>
+							<th>No Order</th>
+							<th>Tanggal Order</th>
+							<th>Alamat</th>
+							<th>Total Bayar</th>
+							<th>Action</th>
+						</tr>
+						<?php foreach ($pesanan_diproses as $key => $value) { ?>
+							<tr>
+								<td><?= $value->nama_pelanggan ?></td>
+								<td><?= $value->no_order ?></td>
+								<td><?= $value->tgl_order ?></td>
+								<td><?= $value->alamat ?></td>
+								</td>
+								<td>
+									<b>Rp. <?= number_format($value->grand_total, 0) ?></b><br>
+									<span class="badge badge-success">Di Proses</span>
+								</td>
+								<td>
+									<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#kirim<?= $value->id_transaksi ?>"><i class=" fa fa-paper-plane">Kirim</i> </button>
+									<!-- <a href="<?= base_url('transaksi/detail/' . $value->no_order) ?>" class="btn btn-primary">Kirim</a> -->
+								</td>
+							</tr>
+						<?php } ?>
+					</table>
+				</div>
+
+				<div class="tab-pane fade" id="custom-tabs-three-coesa" role="tabpanel" aria-labelledby="custom-tabs-three-coesa-tab">
 					<table class="table">
 						<tr>
 							<th>Nama Pelanggan</th>
@@ -112,20 +142,17 @@
 						</tr>
 						<?php foreach ($pesanan_dikirim as $key => $value) { ?>
 							<tr>
-								<td><?= $value->nama ?></td>
+								<td><?= $value->nama_pelanggan ?></td>
 								<td><?= $value->no_order ?></td>
 								<td><?= $value->tgl_order ?></td>
 								<td><?= $value->alamat ?></td>
-								</td>
-								<td><?= $value->nama_pengirim ?></td>
+								<td><?= $value->atas_nama ?></td>
 								<td>
 									<b>Rp. <?= number_format($value->grand_total, 0) ?></b><br>
-									<span class="badge badge-success">Dikirim</span>
+									<span class="badge badge-success">Di Kirim</span>
 								</td>
-
 							</tr>
 						<?php } ?>
-
 					</table>
 				</div>
 
@@ -141,12 +168,12 @@
 						</tr>
 						<?php foreach ($pesanan_selesai as $key => $value) { ?>
 							<tr>
-								<td><?= $value->nama ?></td>
+								<td><?= $value->nama_pelanggan ?></td>
 								<td><?= $value->no_order ?></td>
 								<td><?= $value->tgl_order ?></td>
 								<td><?= $value->alamat ?></td>
 								</td>
-								<td><?= $value->nama_pengirim ?></td>
+								<td><?= $value->atas_nama ?></td>
 								<td>
 									<b>Rp. <?= number_format($value->grand_total, 0) ?></b><br>
 									<span class="badge badge-success">Diterima</span>
@@ -158,7 +185,7 @@
 					</table>
 				</div>
 
-				<div class="tab-pane fade" id="custom-tabs-three-activity" role="tabpanel" aria-labelledby="custom-tabs-three-activity-tab">
+				<!-- <div class="tab-pane fade" id="custom-tabs-three-activity" role="tabpanel" aria-labelledby="custom-tabs-three-activity-tab">
 					<table class="table">
 						<tr>
 							<th>Nama Pelanggan</th>
@@ -185,7 +212,7 @@
 						<?php } ?>
 
 					</table>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -208,17 +235,12 @@
 						<tr>
 							<th>Atas Nama</th>
 							<th>:</th>
-							<td><?= $value->atas_nama ?></td>
+							<td><?= $value->nama_pelanggan ?></td>
 						</tr>
 						<tr>
 							<th>Alamat</th>
 							<th>:</th>
 							<td><?= $value->alamat ?></td>
-						</tr>
-						<tr>
-							<th>Jumlah Bayar</th>
-							<th>:</th>
-							<td>Rp. <?= number_format($value->jml_bayar, 0) ?></td>
 						</tr>
 						<tr>
 							<th>Total Bayar</th>
@@ -236,6 +258,43 @@
 				<div class="modal-footer justify-content-between">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					<button type="submit" class="btn btn-primary">Batalkan</button>
+				</div>
+				<?php echo form_close() ?>
+			</div>
+		</div>
+	</div>
+<?php } ?>
+
+
+<?php foreach ($pesanan_diproses as $key => $value) { ?>
+	<div class="modal fade" id="kirim<?= $value->id_transaksi ?>">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"><?= $value->no_order ?></h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<?php echo form_open('transaksi/kirim/' . $value->id_transaksi) ?>
+
+					<table class="table">
+						<!-- <tr>
+							<th>Biaya Pengiriman</th>
+							<th>:</th>
+							<td>Rp.<?= number_format($value->ongkir, 0) ?></td>
+						</tr> -->
+						<tr>
+							<th>Nama Pengirim</th>
+							<th>:</th>
+							<td><input name="atas_nama" class="form-control" placeholder="Nama Pengirim" required></td>
+						</tr>
+					</table>
+				</div>
+				<div class="modal-footer justify-content-between">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Kirim</button>
 				</div>
 				<?php echo form_close() ?>
 			</div>

@@ -19,12 +19,11 @@ class Transaksi extends CI_Controller
     {
         $data = array(
             'title' => 'Data Transaksi Pelanggan',
-            'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
+            'pesanan_masuk' => $this->m_pesanan_masuk->pesanan_masuk(),
             'pesanan' => $this->m_pesanan_masuk->pesanan(),
             'pesanan_diproses' => $this->m_pesanan_masuk->pesanan_diproses(),
             'pesanan_dikirim' => $this->m_pesanan_masuk->pesanan_dikirim(),
             'pesanan_selesai' => $this->m_pesanan_masuk->pesanan_selesai(),
-            'grafik_member' => $this->m_transaksi->grafik_pelanggan_member(),
             'proses_kirim' => $this->m_pesanan_masuk->proses_kirim(),
             'isi' => 'backend/transaksi/v_transaksi'
         );
@@ -35,10 +34,8 @@ class Transaksi extends CI_Controller
     {
         $data = array(
             'title' => 'Detail Pesanan Pembeli',
-            'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
-            'grafik_member' => $this->m_transaksi->grafik_pelanggan_member(),
-            'pesanan' => $this->m_transaksi->pesanan($no_order),
-            'pesanan_detail' => $this->m_transaksi->pesanan_detail($no_order),
+            'pesanan' => $this->m_pesanan_masuk->pesanan_user($no_order),
+            'pesanan_detail' => $this->m_pesanan_masuk->pesanan_detail($no_order),
             'pesanan_diproses' => $this->m_pesanan_masuk->pesanan_diproses(),
             'proses_kirim' => $this->m_pesanan_masuk->proses_kirim(),
             'isi' => 'backend/transaksi/v_detail'
@@ -50,7 +47,7 @@ class Transaksi extends CI_Controller
     {
         $data = array(
             'id_transaksi' => $id_transaksi,
-            'status_order' => 1
+            'status_order' => 2
         );
         $this->m_pesanan_masuk->update_order($data);
         $this->session->set_flashdata('pesan', 'Pesanan Berhasil Dikirim');
@@ -61,8 +58,8 @@ class Transaksi extends CI_Controller
     {
         $data = array(
             'id_transaksi' => $id_transaksi,
-            'no_resi' => $this->input->post('no_resi'),
-            'status_order' => 2
+            'atas_nama' => $this->input->post('atas_nama'),
+            'status_order' => 3
         );
         $this->m_pesanan_masuk->update_order($data);
         $this->session->set_flashdata('pesan', 'Pesanan Berhasil Dikirim');
