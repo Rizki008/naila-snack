@@ -12,39 +12,13 @@ class Laporan extends CI_Controller
         $this->load->model('m_transaksi');
     }
 
-    public function hari()
+    public function index()
     {
         $data = array(
-            'title' => 'Data Laporan harian',
-            'laporan' => $this->m_laporan->lap_hari(),
-            'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
-            // 'isi' => 'pemilik/laporan/v_hari'
-            'isi' => 'pemilik/laporan/data_laporan/v_lap_hari'
+            'title' => 'Data Laporan',
+            'isi' => 'backend/laporan/v_laporan'
         );
-        $this->load->view('pemilik/v_wrapper', $data, FALSE);
-    }
-
-    public function bulan()
-    {
-        $data = array(
-            'title' => 'Data Laporan Bulanan',
-            'laporan' => $this->m_laporan->lap_bulan(),
-            'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
-            // 'isi' => 'pemilik/laporan/v_bulan'
-            'isi' => 'pemilik/laporan/data_laporan/v_lap_bulan'
-        );
-        $this->load->view('pemilik/v_wrapper', $data, FALSE);
-    }
-    public function tahun()
-    {
-        $data = array(
-            'title' => 'Data Laporan Tahunan',
-            'laporan' => $this->m_laporan->lap_tahun(),
-            'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
-            // 'isi' => 'pemilik/laporan/v_tahun'
-            'isi' => 'pemilik/laporan/data_laporan/v_lap_tahun'
-        );
-        $this->load->view('pemilik/v_wrapper', $data, FALSE);
+        $this->load->view('backend/v_wrapper', $data, FALSE);
     }
 
     public function lap_hari()
@@ -59,10 +33,9 @@ class Laporan extends CI_Controller
             'bulan' => $bulan,
             'tahun' => $tahun,
             'laporan' => $this->m_laporan->lap_hari($tanggal, $bulan, $tahun),
-            'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
-            'isi' => 'pemilik/laporan/data_laporan/v_lap_hari'
+            'isi' => 'backend/laporan/v_lap_harian'
         );
-        $this->load->view('pemilik/v_wrapper', $data, FALSE);
+        $this->load->view('backend/v_wrapper', $data, FALSE);
     }
 
     public function lap_bulan()
@@ -74,22 +47,20 @@ class Laporan extends CI_Controller
             'bulan' => $bulan,
             'tahun' => $tahun,
             'laporan' => $this->m_laporan->lap_bulan($bulan, $tahun),
-            'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
-            'isi' => 'pemilik/laporan/data_laporan/v_lap_bulan'
+            'isi' => 'backend/laporan/v_lap_bulanan'
         );
-        $this->load->view('pemilik/v_wrapper', $data, FALSE);
+        $this->load->view('backend/v_wrapper', $data, FALSE);
     }
 
-    // public function lap_tahun()
-    // {
-    //     $tahun = $this->input->post('tahun');
-    //     $data = array(
-    //         'title' => 'Laporan Pertahun',
-    //         'tahun' => $tahun,
-    //         'laporan' => $this->m_laporan->lap_tahun($tahun),
-    //         'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
-    //         'isi' => 'pemilik/laporan/data_laporan/v_lap_tahun'
-    //     );
-    //     $this->load->view('pemilik/v_wrapper', $data, FALSE);
-    // }
+    public function lap_tahun()
+    {
+        $tahun = $this->input->post('tahun');
+        $data = array(
+            'title' => 'Laporan Pertahun',
+            'tahun' => $tahun,
+            'laporan' => $this->m_laporan->lap_tahun($tahun),
+            'isi' => 'backend/laporan/v_lap_tahunan'
+        );
+        $this->load->view('backend/v_wrapper', $data, FALSE);
+    }
 }

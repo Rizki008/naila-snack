@@ -6,7 +6,7 @@
 		<!-- /.card-header -->
 		<div class="card-body">
 			<?php
-			echo form_open('laporan/lap_harian') ?>
+			echo form_open('laporan/lap_hari') ?>
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="form-group">
@@ -72,7 +72,7 @@
 		</div>
 		<div class="card-body">
 			<?php
-			echo form_open('laporan/lap_bulanan') ?>
+			echo form_open('laporan/lap_bulan') ?>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="form-group">
@@ -125,7 +125,7 @@
 		<!-- /.card-header -->
 		<div class="card-body">
 			<?php
-			echo form_open('laporan/lap_tahunan') ?>
+			echo form_open('laporan/lap_tahun') ?>
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group">

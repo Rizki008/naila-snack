@@ -44,7 +44,7 @@
 																						) {
 																							echo "active";
 																						} ?>">
-						<i class="nav-icon fas fa-address-book"></i>
+						<i class="nav-icon fas fa-sort-amount-down-alt"></i>
 						<p>
 							Kategori
 						</p>
@@ -56,7 +56,7 @@
 																						) {
 																							echo "active";
 																						} ?>">
-						<i class="nav-icon fas fa-address-book"></i>
+						<i class="nav-icon fas fa-tags"></i>
 						<p>
 							Produk
 						</p>
@@ -68,9 +68,9 @@
 																						) {
 																							echo "active";
 																						} ?>">
-						<i class="nav-icon fas fa-address-book"></i>
+						<i class="nav-icon fas fa-images"></i>
 						<p>
-							Gambar
+							Gambar Produk
 						</p>
 					</a>
 				</li>
@@ -93,7 +93,7 @@
 																						) {
 																							echo "active";
 																						} ?>">
-						<i class="nav-icon fas fa-address-book"></i>
+						<i class="nav-icon fas fa-percent"></i>
 						<p>
 							Diskon Produk
 						</p>
@@ -113,7 +113,7 @@
 					</a>
 				</li>
 
-				<!-- <li class="nav-item">
+				<li class="nav-item">
 					<a href="<?= base_url('laporan') ?>" class="nav-link <?php if (
 																				$this->uri->segment(1) == 'laporan'
 																			) {
@@ -124,7 +124,7 @@
 							Laporan
 						</p>
 					</a>
-				</li> -->
+				</li>
 
 				<li class="nav-item">
 					<a href="<?= base_url('admin/user') ?>" class="nav-link <?php if (

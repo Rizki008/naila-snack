@@ -13,7 +13,7 @@
 		Anything you want
 	</div>
 	<!-- Default to the left -->
-	<strong>Copyright &copy; 2022 <a href="https://adminlte.io">Liest Art Variasi</a>.</strong>
+	<strong>Copyright &copy; 2022 <a href="https://adminlte.io">Naila Snack & Catering</a>.</strong>
 </footer>
 </div>
 
