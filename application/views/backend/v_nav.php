@@ -17,7 +17,7 @@
 			</div>
 			<div class="info">
 				<a href="<?= base_url('admin') ?>" class="d-block">
-					<?= $this->session->userdata('nama_user'); ?>
+					<?= $this->session->userdata('nama'); ?>
 				</a>
 			</div>
 		</div>
@@ -141,7 +141,7 @@
 
 				<li class="nav-item">
 					<a href="<?= base_url('auth/logout_user') ?>" class="nav-link">
-						<i class="nav-icon fas fa-angle-double-left"></i>
+						<i class="nav-icon fas fa-sign-out-alt"></i>
 						<p>
 							Keluar
 						</p>
