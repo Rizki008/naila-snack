@@ -41,7 +41,14 @@
 							<td><?= $value->nama_diskon ?></td>
 							<td><?= number_format($value->diskon, 0) ?> %</td>
 							<td><?= $value->tgl_selesai ?></td>
-							<td><?= $value->member ?></td>
+							<td><?php if ($value->member == 1) { ?>
+									<span class="badge badge-primary">Silver</span>
+								<?php } elseif ($value->member == 2) { ?>
+									<span class="badge badge-warning">Gold</span>
+								<?php } elseif ($value->member == 3) { ?>
+									<span class="badge badge-danger">Platinum</span>
+								<?php } ?>
+							</td>
 							<td>
 								<a href="<?= base_url('master_produk/update/' . $value->id_produk) ?>" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
 								<a href="<?= base_url('master_produk/delete/' . $value->id_produk) ?>" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
