@@ -39,12 +39,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="hero__item set-bg" data-setbg="<?= base_url() ?>ogani-master/img/hero/banner.jpg">
+                <div class="hero__item set-bg" data-setbg="<?= base_url() ?>ogani-master/img/hero/benner.jpeg">
                     <div class="hero__text">
                         <span>SNACK DAN CATERING</span>
                         <h2>Menu <br />100% Halal</h2>
                         <p>Pemesanan H-7</p>
-                        <a href="#" class="primary-btn">SHOP NOW</a>
+                        <a href="<?= base_url('home/shop') ?>" class="primary-btn">SHOP NOW</a>
                     </div>
                 </div>
             </div>
@@ -119,24 +119,24 @@
 </section>
 <!-- Featured Section End -->
 
-<!-- Banner Begin -->
-<!-- <div class="banner">
+<!-- e Begin -->
+<!-- <div class="e">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="banner__pic">
-                    <img src="<?= base_url() ?>ogani-master/img/banner/banner-1.jpg" alt="">
+                <div class="e__pic">
+                    <img src="<?= base_url() ?>ogani-master/img/e/e-1.jpg" alt="">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="banner__pic">
-                    <img src="<?= base_url() ?>ogani-master/img/banner/banner-2.jpg" alt="">
+                <div class="e__pic">
+                    <img src="<?= base_url() ?>ogani-master/img/e/e-2.jpg" alt="">
                 </div>
             </div>
         </div>
     </div>
 </div> -->
-<!-- Banner End -->
+<!-- e End -->
 
 <!-- Latest Product Section Begin -->
 <section class="latest-product spad">
