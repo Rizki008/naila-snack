@@ -69,14 +69,16 @@ class Home extends CI_Controller
         $this->load->view('frontend/v_wrapper', $data, FALSE);
     }
 
-    // public function kategori($id_kategori)
-    // {
-    //     $kategori = $this->m_home->kategori($id_kategori);
-    //     $data = array(
-    //         'title' => $kategori->nama_kategori,
-    //         'produk' => $this->m_home->produk_kategori($id_kategori),
-    //         'isi' => 'frontend/kategori/v_kategori'
-    //     );
-    //     $this->load->view('frontend/v_wrapper', $data, FALSE);
-    // }
+    public function kategori($id_kategori)
+    {
+        $kategori = $this->m_home->kategori($id_kategori);
+        $data = array(
+            'title' => $kategori->nama_kategori,
+            'produk' => $this->m_home->produk_kategori($id_kategori),
+            'diskon' => $this->m_home->diskon(),
+            'produk_lates' => $this->m_home->produk_lates(),
+            'isi' => 'frontend/kategori/v_kategori'
+        );
+        $this->load->view('frontend/v_wrapper', $data, FALSE);
+    }
 }
