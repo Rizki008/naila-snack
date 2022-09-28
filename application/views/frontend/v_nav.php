@@ -103,7 +103,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="<?= base_url() ?>"><img src="<?= base_url() ?>ogani-master/img/logo.png" alt=""></a>
+                    <a href="<?= base_url() ?>"><img src="<?= base_url() ?>ogani-master/img/logos.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6">
