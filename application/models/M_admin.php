@@ -118,6 +118,11 @@ class M_admin extends CI_Model
         $this->db->order_by('qty', 'desc');
         return $this->db->get()->result();
     }
+
+    public function grafik_uang()
+    {
+        return $this->db->query("SELECT SUM(qty), transaksi.nama_lengkap, transaksi.grand_total FROM `transaksi` JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan JOIN rinci_transaksi ON transaksi.no_order=rinci_transaksi.no_order GROUP BY pelanggan.id_pelanggan ORDER BY transaksi.grand_total DESC")->result();;
+    }
 }
 
 /* End of file M_admin.php */
