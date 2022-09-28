@@ -128,8 +128,6 @@ class Master_produk extends CI_Controller
 	{
 		$data = array(
 			'title' => 'Data Produk',
-			'grafik_pelanggan' => $this->m_transaksi->grafik_pelanggan(),
-			'grafik_member' => $this->m_transaksi->grafik_pelanggan_member(),
 			'produk' => $this->m_master_produk->produk(),
 			'isi' => 'backend/produk/v_produk'
 		);
@@ -344,8 +342,8 @@ class Master_produk extends CI_Controller
 	public function delete_gambar($id_produk, $id_gambar)
 	{
 		$gambar = $this->m_master_produk->detail($id_gambar);
-		if ($gambar->gambar !== "") {
-			unlink('./assets/gambar/' . $gambar->gambar);
+		if ($gambar->img !== "") {
+			unlink('./assets/gambar/' . $gambar->img);
 		}
 
 		$data = array(
