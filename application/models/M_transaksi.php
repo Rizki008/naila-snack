@@ -159,20 +159,20 @@ class M_transaksi extends CI_Model
         $this->db->order_by('qty', 'desc');
         return $this->db->get()->result();
     }
-    public function grafik_pelanggan_member()
-    {
+    // public function grafik_pelanggan_member()
+    // {
 
-        return $this->db->query("SELECT SUM(qty), pelanggan.level_member, rinci_transaksi.qty FROM rinci_transaksi JOIN transaksi ON rinci_transaksi.no_order=transaksi.no_order JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan GROUP BY pelanggan.id_pelanggan ORDER BY qty DESC")->result();
-        // $this->db->select_sum('qty');
-        // $this->db->select('pelanggan.level_member');
-        // $this->db->select('rinci_transaksi.qty');
-        // $this->db->from('rinci_transaksi');
-        // $this->db->join('transaksi', 'rinci_transaksi.no_order = transaksi.no_order', 'left');
-        // $this->db->join('pelanggan', 'transaksi.id_pelanggan = pelanggan.id_pelanggan', 'left');
-        // $this->db->group_by('pelanggan.id_pelanggan');
-        // $this->db->order_by('qty', 'desc');
-        // return $this->db->get()->result();
-    }
+    //     return $this->db->query("SELECT SUM(qty), pelanggan.level_member, rinci_transaksi.qty FROM rinci_transaksi JOIN transaksi ON rinci_transaksi.no_order=transaksi.no_order JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan GROUP BY pelanggan.id_pelanggan ORDER BY qty DESC")->result();
+    // $this->db->select_sum('qty');
+    // $this->db->select('pelanggan.level_member');
+    // $this->db->select('rinci_transaksi.qty');
+    // $this->db->from('rinci_transaksi');
+    // $this->db->join('transaksi', 'rinci_transaksi.no_order = transaksi.no_order', 'left');
+    // $this->db->join('pelanggan', 'transaksi.id_pelanggan = pelanggan.id_pelanggan', 'left');
+    // $this->db->group_by('pelanggan.id_pelanggan');
+    // $this->db->order_by('qty', 'desc');
+    // return $this->db->get()->result();
+    // }
 }
 
 /* End of file M_transaksi.php */
