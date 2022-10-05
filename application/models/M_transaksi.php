@@ -148,7 +148,6 @@ class M_transaksi extends CI_Model
     public function grafik_pelanggan()
     {
 
-        // return $this->db->query("SELECT COUNT(transaksi.no_order) as qty, nama, month(tgl_order) FROM transaksi JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan GROUP BY transaksi.id_pelanggan")->result();
         $this->db->select_sum('qty');
         $this->db->select('pelanggan.nama_pelanggan');
         $this->db->select('rinci_transaksi.qty');
@@ -158,6 +157,20 @@ class M_transaksi extends CI_Model
         $this->db->group_by('pelanggan.id_pelanggan');
         $this->db->order_by('qty', 'desc');
         return $this->db->get()->result();
+    }
+    public function grafik_alamat()
+    {
+
+        return $this->db->query("SELECT SUM(qty) as total_beli, pelanggan.kecamatan FROM rinci_transaksi JOIN transaksi ON rinci_transaksi.no_order=transaksi.no_order JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan GROUP BY pelanggan.kecamatan ORDER BY qty DESC")->result();
+        // $this->db->select_sum('qty');
+        // $this->db->select('pelanggan.nama_pelanggan');
+        // $this->db->select('rinci_transaksi.qty');
+        // $this->db->from('rinci_transaksi');
+        // $this->db->join('transaksi', 'rinci_transaksi.no_order = transaksi.no_order', 'left');
+        // $this->db->join('pelanggan', 'transaksi.id_pelanggan = pelanggan.id_pelanggan', 'left');
+        // $this->db->group_by('pelanggan.id_pelanggan');
+        // $this->db->order_by('qty', 'desc');
+        // return $this->db->get()->result();
     }
     // public function grafik_pelanggan_member()
     // {
