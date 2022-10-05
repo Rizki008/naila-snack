@@ -116,6 +116,18 @@
                             <input type="password" name="password" value="<?= set_value('password') ?>" required>
                         </div>
                         <div class="checkout__input">
+                            <p>Provinsi<span>*</span></p>
+                            <input type="text" name="provinsi" value="<?= set_value('provinsi') ?>" required>
+                        </div>
+                        <div class="checkout__input">
+                            <p>Kabupaten<span>*</span></p>
+                            <input type="text" name="kabupaten" value="<?= set_value('kabupaten') ?>" required>
+                        </div>
+                        <div class="checkout__input">
+                            <p>Kecamatan<span>*</span></p>
+                            <input type="text" name="kecamatan" value="<?= set_value('kecamatan') ?>" required>
+                        </div>
+                        <div class="checkout__input">
                             <p>Kode Post<span>*</span></p>
                             <input type="text" name="kode_post" value="<?= set_value('kode_post') ?>" required>
                         </div>
