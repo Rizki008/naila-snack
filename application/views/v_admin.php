@@ -56,20 +56,17 @@
     </div>
 </div>
 <!-- Left col -->
-<section class="col-lg-7 connectedSortable">
+<section class="col-lg-10 connectedSortable">
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">
                 <i class="fas fa-chart-pie mr-1"></i>
-                Analisis Nominal Uang Terbesar
+                Analisis Produk Paling Laris
             </h3>
             <div class="card-tools">
                 <ul class="nav nav-pills ml-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Penjualan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#sales-chart" data-toggle="tab">Pelanggan</a>
                     </li>
                 </ul>
             </div>
@@ -187,8 +184,30 @@
                         });
                     </script>
                 </div>
-                <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-
+            </div>
+        </div><!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</section>
+<section class="col-lg-10 connectedSortable">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-chart-pie mr-1"></i>
+                Analisis Pelanggan
+            </h3>
+            <div class="card-tools">
+                <ul class="nav nav-pills ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Pelanggan Loyal</a>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.card-header -->
+        <div class="card-body">
+            <div class="tab-content p-0">
+                <!-- Morris chart - Sales -->
+                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
                     <?php
                     foreach ($grafik_pelanggan as $key => $value) {
                         $nama_pelanggan[] = $value->nama_pelanggan;
@@ -196,7 +215,7 @@
                     }
                     ?>
                     <canvas id="myChartsa" height="100" style="height: 100px;"></canvas>
-                    <!-- <canvas id="myChart" height="100"></canvas> -->
+                    <!-- <canvas id="myHanisa" height="100"></canvas> -->
                     <script>
                         var ctx = document.getElementById('myChartsa');
                         var myChartsa = new Chart(ctx, {
@@ -339,6 +358,139 @@
                                 datasets: [{
                                     label: 'Grafik Nominal Uang Terbesar',
                                     data: <?= json_encode($grand_total) ?>,
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.80)',
+                                        'rgba(54, 162, 235, 0.80)',
+                                        'rgba(255, 206, 86, 0.80)',
+                                        'rgba(75, 192, 192, 0.80)',
+                                        'rgba(153, 102, 255, 0.80)',
+                                        'rgba(255, 159, 64, 0.80)',
+                                        'rgba(201, 76, 76, 0.3)',
+                                        'rgba(201, 77, 77, 1)',
+                                        'rgba(0, 140, 162, 1)',
+                                        'rgba(158, 109, 8, 1)',
+                                        'rgba(201, 76, 76, 0.8)',
+                                        'rgba(0, 129, 212, 1)',
+                                        'rgba(201, 77, 201, 1)',
+                                        'rgba(255, 207, 207, 1)',
+                                        'rgba(201, 77, 77, 1)',
+                                        'rgba(128, 98, 98, 1)',
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(128, 128, 128, 1)',
+                                        'rgba(255, 99, 132, 0.80)',
+                                        'rgba(54, 162, 235, 0.80)',
+                                        'rgba(255, 206, 86, 0.80)',
+                                        'rgba(75, 192, 192, 0.80)',
+                                        'rgba(153, 102, 255, 0.80)',
+                                        'rgba(255, 159, 64, 0.80)',
+                                        'rgba(201, 76, 76, 0.3)',
+                                        'rgba(201, 77, 77, 1)',
+                                        'rgba(0, 140, 162, 1)',
+                                        'rgba(158, 109, 8, 1)',
+                                        'rgba(201, 76, 76, 0.8)',
+                                        'rgba(0, 129, 212, 1)',
+                                        'rgba(201, 77, 201, 1)',
+                                        'rgba(255, 207, 207, 1)',
+                                        'rgba(201, 77, 77, 1)',
+                                        'rgba(128, 98, 98, 1)',
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(128, 128, 128, 1)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)',
+                                        'rgba(201, 76, 76, 0.3)',
+                                        'rgba(201, 77, 77, 1)',
+                                        'rgba(0, 140, 162, 1)',
+                                        'rgba(158, 109, 8, 1)',
+                                        'rgba(201, 76, 76, 0.8)',
+                                        'rgba(0, 129, 212, 1)',
+                                        'rgba(201, 77, 201, 1)',
+                                        'rgba(255, 207, 207, 1)',
+                                        'rgba(201, 77, 77, 1)',
+                                        'rgba(128, 98, 98, 1)',
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(128, 128, 128, 1)',
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)',
+                                        'rgba(201, 76, 76, 0.3)',
+                                        'rgba(201, 77, 77, 1)',
+                                        'rgba(0, 140, 162, 1)',
+                                        'rgba(158, 109, 8, 1)',
+                                        'rgba(201, 76, 76, 0.8)',
+                                        'rgba(0, 129, 212, 1)',
+                                        'rgba(201, 77, 201, 1)',
+                                        'rgba(255, 207, 207, 1)',
+                                        'rgba(201, 77, 77, 1)',
+                                        'rgba(128, 98, 98, 1)',
+                                        'rgba(0, 0, 0, 1)',
+                                        'rgba(128, 128, 128, 1)'
+                                    ],
+                                    fill: false,
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+        </div><!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</section>
+<section class="col-lg-10 connectedSortable">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-chart-pie mr-1"></i>
+                Analisis Alamat
+            </h3>
+            <div class="card-tools">
+                <ul class="nav nav-pills ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Analisis Alamat</a>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- /.card-header -->
+        <div class="card-body">
+            <div class="tab-content p-0">
+                <!-- Morris chart - Sales -->
+                <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+                    <?php
+                    foreach ($grafik_alamat as $key => $value) {
+                        $kecamatan[] = $value->kecamatan;
+                        $total_beli[] = $value->total_beli;
+                    }
+                    ?>
+                    <canvas id="mymaharani" height="100" style="height: 100px;"></canvas>
+                    <!-- <canvas id="mymaharani" height="100"></canvas> -->
+                    <script>
+                        var ctx = document.getElementById('mymaharani');
+                        var mymaharani = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: <?= json_encode($kecamatan) ?>,
+                                datasets: [{
+                                    label: 'Grafik Nominal Uang Terbesar',
+                                    data: <?= json_encode($total_beli) ?>,
                                     backgroundColor: [
                                         'rgba(255, 99, 132, 0.80)',
                                         'rgba(54, 162, 235, 0.80)',
