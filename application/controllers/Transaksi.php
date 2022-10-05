@@ -25,6 +25,7 @@ class Transaksi extends CI_Controller
             'pesanan_dikirim' => $this->m_pesanan_masuk->pesanan_dikirim(),
             'pesanan_selesai' => $this->m_pesanan_masuk->pesanan_selesai(),
             'proses_kirim' => $this->m_pesanan_masuk->proses_kirim(),
+            'pesanan_dibatalkan' => $this->m_pesanan_masuk->pesanan_dibatalkan(),
             'isi' => 'backend/transaksi/v_transaksi'
         );
         $this->load->view('backend/v_wrapper', $data, FALSE);
@@ -63,6 +64,18 @@ class Transaksi extends CI_Controller
         );
         $this->m_pesanan_masuk->update_order($data);
         $this->session->set_flashdata('pesan', 'Pesanan Berhasil Dikirim');
+        redirect('transaksi');
+    }
+
+    public function batal($id_transaksi)
+    {
+        $data = array(
+            'id_transaksi' => $id_transaksi,
+            'catatan' => $this->input->post('catatan'),
+            'status_order' => 5
+        );
+        $this->m_pesanan_masuk->update_order($data);
+        $this->session->set_flashdata('pesan', 'Pesanan Berhasil Di Batalkan');
         redirect('transaksi');
     }
 }
