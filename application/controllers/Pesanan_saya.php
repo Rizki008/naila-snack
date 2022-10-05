@@ -116,4 +116,15 @@ class Pesanan_saya extends CI_Controller
         $this->db->update('riview', $data);
         redirect('pesanan_saya/detail_pesanan/' . $id);
     }
+
+    public function dibatalkan($id_transaksi)
+    {
+        $data = array(
+            'id_transaksi' => $id_transaksi,
+            'status_order' => 4
+        );
+        $this->m_pesanan_masuk->update_order($data);
+        $this->session->set_flashdata('pesan', 'Pesanan Telah Dibatalkan');
+        redirect('pesanan_saya');
+    }
 }
