@@ -17,6 +17,9 @@ class Pelanggan extends CI_Controller
         $this->form_validation->set_rules('alamat', 'Alamat', 'required', array('required' => '%s Mohon untuk diisi!!!'));
         $this->form_validation->set_rules('no_tlpn', 'No Telphone', 'required', array('required' => '%s Mohon untuk diisi!!!'));
         $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required', array('required' => '%s Mohon untuk diisi!!!'));
+        $this->form_validation->set_rules('provinsi', 'Provinsi', 'required', array('required' => '%s Mohon untuk diisi!!!'));
+        $this->form_validation->set_rules('kabupaten', 'Kabupaten', 'required', array('required' => '%s Mohon untuk diisi!!!'));
+        $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required', array('required' => '%s Mohon untuk diisi!!!'));
         $this->form_validation->set_rules('kode_post', 'Kode Post', 'required', array('required' => '%s Mohon untuk diisi!!!'));
         $this->form_validation->set_rules('email', 'Email', 'required|is_unique[pelanggan.email]', array(
             'required' => '%s Mohon untuk diisi!!!',
@@ -44,6 +47,9 @@ class Pelanggan extends CI_Controller
                 'password' => $this->input->post('password'),
                 'no_tlpn' => $this->input->post('no_tlpn'),
                 'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+                'provinsi' => $this->input->post('provinsi'),
+                'kabupaten' => $this->input->post('kabupaten'),
+                'kecamatan' => $this->input->post('kecamatan'),
                 'kode_post' => $this->input->post('kode_post'),
                 'alamat' => $this->input->post('alamat'),
                 'level_member' => '3',
