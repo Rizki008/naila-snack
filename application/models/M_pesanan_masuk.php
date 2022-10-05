@@ -126,6 +126,16 @@ class M_pesanan_masuk extends CI_Model
 
         // return $this->db->query("SELECT * FROM `transaksi` JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan JOIN rinci_transaksi ON transaksi.no_order=rinci_transaksi.no_order JOIN produk ON rinci_transaksi.id_produk=produk.id_produk WHERE transaksi.no_order='" . $no_order . "'")->result();
     }
+
+    public function pesanan_dibatalkan()
+    {
+        $this->db->select('*');
+        $this->db->from('transaksi');
+        $this->db->join('pelanggan', 'transaksi.id_pelanggan = pelanggan.id_pelanggan', 'left');
+        $this->db->where('status_order=5');
+        $this->db->order_by('id_transaksi', 'desc');
+        return $this->db->get()->result();
+    }
 }
 
 /* End of file M_pesanan_masuk.php */
