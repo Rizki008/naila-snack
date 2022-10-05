@@ -25,7 +25,7 @@ class Admin extends CI_Controller
             'grafik' => $this->m_admin->grafik(),
             'grafik_pelanggan' => $this->m_admin->grafik_pelanggan(),
             'grafik_uang' => $this->m_admin->grafik_uang(),
-            // 'grafik_member' => $this->m_transaksi->grafik_pelanggan_member(),
+            'grafik_alamat' => $this->m_transaksi->grafik_alamat(),
             'isi' => 'v_admin'
         );
         $this->load->view('backend/v_wrapper', $data, FALSE);
