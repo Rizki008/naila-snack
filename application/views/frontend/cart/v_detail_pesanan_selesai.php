@@ -77,6 +77,8 @@
                         echo '<p>Status Order: <span class="badge badge-primary">Pesanan Dikirim</span></p>';
                     } else if ($detail['transaksi']->status_order == '4') {
                         echo '<p>Status Order: <span class="badge badge-success">Pesanan Diterima</span></p>';
+                    } else if ($detail['transaksi']->status_order == '5') {
+                        echo '<p>Status Order: <span class="badge badge-danger">Pesanan Dibatalkan</span></p>';
                     }
 
                     if ($detail['transaksi']->status_order == '3') {
