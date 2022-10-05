@@ -29,9 +29,9 @@
 				<li class="nav-item">
 					<a class="nav-link" id="custom-tabs-three-settings-tab" data-toggle="pill" href="#custom-tabs-three-settings" role="tab" aria-controls="custom-tabs-three-settings" aria-selected="false">Selesai</a>
 				</li>
-				<!-- <li class="nav-item">
+				<li class="nav-item">
 					<a class="nav-link" id="custom-tabs-three-activity-tab" data-toggle="pill" href="#custom-tabs-three-activity" role="tab" aria-controls="custom-tabs-three-activity" aria-selected="false">Dibatalkan</a>
-				</li> -->
+				</li>
 			</ul>
 		</div>
 		<div class="card-body">
@@ -185,34 +185,32 @@
 					</table>
 				</div>
 
-				<!-- <div class="tab-pane fade" id="custom-tabs-three-activity" role="tabpanel" aria-labelledby="custom-tabs-three-activity-tab">
+				<div class="tab-pane fade" id="custom-tabs-three-activity" role="tabpanel" aria-labelledby="custom-tabs-three-activity-tab">
 					<table class="table">
 						<tr>
 							<th>Nama Pelanggan</th>
 							<th>No Order</th>
 							<th>Tanggal Order</th>
+							<th>Alamat</th>
+							<th>Catatan Dibatalkan</th>
 							<th>Total Bayar</th>
-							<th>Catatan</th>
 						</tr>
 						<?php foreach ($pesanan_dibatalkan as $key => $value) { ?>
 							<tr>
-								<td><?= $value->nama ?></td>
-								<td>
-									<?= $value->no_order ?></a>
-								</td>
+								<td><?= $value->nama_pelanggan ?></td>
+								<td><?= $value->no_order ?></td>
 								<td><?= $value->tgl_order ?></td>
-								<td><b>Ongkir : Rp. <?= number_format($value->ongkir, 0) ?></b><br>
-								</td>
-								<td>
-									<b>Rp. <?= number_format($value->grand_total, 0) ?></b><br>
-									<span class="badge badge-danger">Pesanan Dibatalkan</span>
+								<td><?= $value->alamat ?></td>
 								</td>
 								<td><?= $value->catatan ?></td>
+								<td>
+									<b>Rp. <?= number_format($value->grand_total, 0) ?></b><br>
+									<span class="badge badge-danger">Dibatalkan</span>
+								</td>
 							</tr>
 						<?php } ?>
-
 					</table>
-				</div> -->
+				</div>
 			</div>
 		</div>
 	</div>
@@ -230,7 +228,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<?php echo form_open('admin/batal/' . $value->id_transaksi) ?>
+					<?php echo form_open('transaksi/batal/' . $value->id_transaksi) ?>
 					<table class="table">
 						<tr>
 							<th>Atas Nama</th>
