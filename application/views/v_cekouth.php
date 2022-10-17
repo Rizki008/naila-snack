@@ -281,23 +281,23 @@
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>Nama Lengkap<span>*</span></p>
-                                        <input type="text" name="nama_lengkap" value="<?= set_value('nama_lengkap') ?>" required>
+                                        <input type="text" name="nama_lengkap" value="<?= $this->session->userdata('nama_pelanggan') ?>">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="checkout__input">
                                         <p>No Telephone<span>*</span></p>
-                                        <input type="number" name="no_tlpn" value="<?= set_value('no_tlpn') ?>" required>
+                                        <input type="number" name="no_tlpn" value="<?= $this->session->userdata('no_tlpn'); ?>">
                                     </div>
                                 </div>
                             </div>
                             <div class="checkout__input">
                                 <p>Alamat Lengkap Penerima<span>*</span></p>
-                                <input type="text" name="alamat" value="<?= set_value('alamat') ?>" required>
+                                <input type="text" name="alamat" value="<?= $this->session->userdata('alamat'); ?>">
                             </div>
                             <div class="checkout__input">
                                 <p>Kode Post<span>*</span></p>
-                                <input type="text" name="kode_pos" value="<?= set_value('kode_pos') ?>">
+                                <input type="text" name="kode_pos" value="<?= $this->session->userdata('kode_pos'); ?>">
                             </div>
                             <div class="checkout__input">
                                 <p>Pembayaran<span>*</span></p>

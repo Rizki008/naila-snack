@@ -21,14 +21,14 @@ class Pelanggan_login
             $no_tlpn = $cek->no_tlpn;
             $alamat = $cek->alamat;
             $password = $cek->password;
-            $kode_post = $cek->kode_post;
+            $kode_pos = $cek->kode_pos;
             $email = $cek->email;
 
             $this->ci->session->set_userdata('id_pelanggan', $id_pelanggan);
             $this->ci->session->set_userdata('jenis_kelamin', $jenis_kelamin);
             $this->ci->session->set_userdata('nama_pelanggan', $nama_pelanggan);
             $this->ci->session->set_userdata('password', $password);
-            $this->ci->session->set_userdata('kode_post', $kode_post);
+            $this->ci->session->set_userdata('kode_pos', $kode_pos);
             $this->ci->session->set_userdata('email', $email);
             $this->ci->session->set_userdata('no_tlpn', $no_tlpn);
             $this->ci->session->set_userdata('alamat', $alamat);
@@ -54,7 +54,7 @@ class Pelanggan_login
         $this->ci->session->unset_userdata('password');
         $this->ci->session->unset_userdata('jenis_kelamin');
         $this->ci->session->unset_userdata('email');
-        $this->ci->session->unset_userdata('kode_post');
+        $this->ci->session->unset_userdata('kode_pos');
         $this->ci->session->unset_userdata('no_tlpn');
         $this->ci->session->unset_userdata('alamat');
 

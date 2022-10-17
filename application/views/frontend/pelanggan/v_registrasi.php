@@ -129,7 +129,7 @@
                         </div>
                         <div class="checkout__input">
                             <p>Kode Post<span>*</span></p>
-                            <input type="text" name="kode_post" value="<?= set_value('kode_post') ?>" required>
+                            <input type="text" name="kode_pos" value="<?= set_value('kode_pos') ?>" required>
                         </div>
                         <div class="checkout__input">
                             <p>Alamat Lengkap<span>*</span></p>

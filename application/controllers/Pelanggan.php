@@ -20,7 +20,7 @@ class Pelanggan extends CI_Controller
         $this->form_validation->set_rules('provinsi', 'Provinsi', 'required', array('required' => '%s Mohon untuk diisi!!!'));
         $this->form_validation->set_rules('kabupaten', 'Kabupaten', 'required', array('required' => '%s Mohon untuk diisi!!!'));
         $this->form_validation->set_rules('kecamatan', 'Kecamatan', 'required', array('required' => '%s Mohon untuk diisi!!!'));
-        $this->form_validation->set_rules('kode_post', 'Kode Post', 'required', array('required' => '%s Mohon untuk diisi!!!'));
+        $this->form_validation->set_rules('kode_pos', 'Kode Post', 'required', array('required' => '%s Mohon untuk diisi!!!'));
         $this->form_validation->set_rules('email', 'Email', 'required|is_unique[pelanggan.email]', array(
             'required' => '%s Mohon untuk diisi!!!',
             'is_unique' => '%s Email Sudah Terdaptar'
@@ -50,7 +50,7 @@ class Pelanggan extends CI_Controller
                 'provinsi' => $this->input->post('provinsi'),
                 'kabupaten' => $this->input->post('kabupaten'),
                 'kecamatan' => $this->input->post('kecamatan'),
-                'kode_post' => $this->input->post('kode_post'),
+                'kode_pos' => $this->input->post('kode_pos'),
                 'alamat' => $this->input->post('alamat'),
                 'level_member' => '3',
                 'point' => '0',
