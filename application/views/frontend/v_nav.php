@@ -66,7 +66,18 @@
                     <div class="header__top__left">
                         <ul>
                             <li><i class="fa fa-envelope"></i> nalika-snack@gmail.com</li>
-                            <li>Free Shipping for all Order of $99</li>
+                            <?php if ($this->session->userdata('email') == "") { ?>
+                                <li> - </li>
+                            <?php } else { ?>
+                                <?php if ($this->session->userdata('level_member') == '3') { ?>
+                                    <li>Member Clasic</li>
+                                <?php } elseif ($this->session->userdata('level_member') == '2') { ?>
+                                    <li>Member Silver</li>
+                                <?php } elseif ($this->session->userdata('level_member') == '1') { ?>
+                                    <li>Member Gold</li>
+                                <?php } ?>
+                                <!-- <li><?= $this->session->userdata('level_member'); ?></li> -->
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
