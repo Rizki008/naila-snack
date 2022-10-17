@@ -54,6 +54,16 @@ class Transaksi extends CI_Controller
         $this->session->set_flashdata('pesan', 'Pesanan Berhasil Dikirim');
         redirect('transaksi');
     }
+    public function pengambilan($id_transaksi)
+    {
+        $data = array(
+            'id_transaksi' => $id_transaksi,
+            'status_order' => 4
+        );
+        $this->m_pesanan_masuk->update_order($data);
+        $this->session->set_flashdata('pesan', 'Pesanan Berhasil Dikirim');
+        redirect('transaksi');
+    }
 
     public function kirim($id_transaksi)
     {

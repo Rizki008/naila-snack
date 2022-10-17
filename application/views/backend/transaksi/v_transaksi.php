@@ -53,12 +53,16 @@
 								<td><?= $value->tgl_order ?></td>
 								<td>
 									<b>Rp. <?= number_format($value->grand_total, 0) ?></b><br>
-
-									<?php if ($value->status_bayar == 0) { ?>
-										<span class="badge badge-warning">Belum bayar</span>
-									<?php } else { ?>
-										<span class="badge badge-success">Sudah bayar</span><br>
-										<span class="badge badge-primary">Menunggu Verifikasi</span>
+									<?php if ($value->pembayaran == '2') { ?>
+										<?php if ($value->status_bayar == 0) { ?>
+											<span class="badge badge-warning">Belum bayar</span>
+										<?php } else { ?>
+											<span class="badge badge-success">Sudah bayar</span><br>
+											<span class="badge badge-primary">Menunggu Verifikasi</span>
+										<?php } ?>
+									<?php } elseif ($value->pembayaran == '1') { ?>
+										<span class="badge badge-warning">Pembayaran COD</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href=" <?= base_url('transaksi/proses/' . $value->id_transaksi) ?>" class="btn btn-sm btn-flat btn-primary">Verifikasi</a>
 									<?php } ?>
 								</td>
 							</tr>
@@ -122,7 +126,12 @@
 									<span class="badge badge-success">Di Proses</span>
 								</td>
 								<td>
-									<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#kirim<?= $value->id_transaksi ?>"><i class=" fa fa-paper-plane">Kirim</i> </button>
+									<?php if ($value->pembayaran == '2') { ?>
+										<button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#kirim<?= $value->id_transaksi ?>"><i class=" fa fa-paper-plane">Kirim</i> </button>
+									<?php } elseif ($value->pembayaran == '1') { ?>
+										<!-- <a href=" <?= base_url('transaksi/pengambilan/' . $value->id_transaksi) ?>" class="btn btn-sm btn-flat btn-primary">Telah Diambil</a> -->
+										<span class="badge badge-warning">Menunggu Pengambilan</span>
+									<?php } ?>
 									<!-- <a href="<?= base_url('transaksi/detail/' . $value->no_order) ?>" class="btn btn-primary">Kirim</a> -->
 								</td>
 							</tr>
@@ -146,10 +155,20 @@
 								<td><?= $value->no_order ?></td>
 								<td><?= $value->tgl_order ?></td>
 								<td><?= $value->alamat ?></td>
-								<td><?= $value->atas_nama ?></td>
+
+								<td><?php if ($value->pembayaran == '2') { ?>
+										<?= $value->atas_nama ?>
+									<?php } elseif ($value->pembayaran == '1') { ?>
+										-
+									<?php } ?>
+								</td>
 								<td>
 									<b>Rp. <?= number_format($value->grand_total, 0) ?></b><br>
-									<span class="badge badge-success">Di Kirim</span>
+									<?php if ($value->pembayaran == '2') { ?>
+										<span class="badge badge-success">Di Kirim</span>
+									<?php } elseif ($value->pembayaran == '1') { ?>
+										<span class="badge badge-success">Diambil</span>
+									<?php } ?>
 								</td>
 							</tr>
 						<?php } ?>
@@ -172,8 +191,13 @@
 								<td><?= $value->no_order ?></td>
 								<td><?= $value->tgl_order ?></td>
 								<td><?= $value->alamat ?></td>
+								<td>
+									<?php if ($value->pembayaran == '2') { ?>
+										<?= $value->atas_nama ?>
+									<?php } elseif ($value->pembayaran == '1') { ?>
+										<h5>-</h5>
+									<?php } ?>
 								</td>
-								<td><?= $value->atas_nama ?></td>
 								<td>
 									<b>Rp. <?= number_format($value->grand_total, 0) ?></b><br>
 									<span class="badge badge-success">Diterima</span>

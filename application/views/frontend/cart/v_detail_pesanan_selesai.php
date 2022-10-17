@@ -98,11 +98,11 @@
                     <?php
                     }
                     ?>
+                    <p>Keterangan : <strong><?= $detail['transaksi']->catatan ?></strong></p>
                 </div>
-
                 <div class="col-lg-6">
                     <?php
-                    if ($detail['transaksi']->status_order == '0') {
+                    if ($detail['transaksi']->status_order == '0' and $detail['transaksi']->pembayaran == '2') {
                     ?>
                         <h3>Pembayaran</h3>
                         <p class="text-danger">Bank BRI. 0123-343-1233-02-1</p>
@@ -125,10 +125,19 @@
                         <input type="text" class="form-control" name="nama_bank" value="<?= set_value('nama_bank') ?>">
                         <button type="submit" class="site-btn mt-3 mb-3">Kirim</button>
                         <?php echo form_close() ?>
-                    <?php
-                    }
-                    ?>
 
+                        <h3>Batalkan</h3>
+                        <a href="<?= base_url('pesanan_saya/dibatalkan/' . $detail['transaksi']->id_transaksi) ?>" class="site-btn mt-3 mb-3">Batalkan Pesanan</a>
+                    <?php
+                    } elseif ($detail['transaksi']->pembayaran == '1') { ?>
+                        <h3>Pembayaran COD</h3>
+                    <?php }
+                    ?>
+                </div>
+                <div class="col-lg-6">
+                    <?php if ($detail['transaksi']->status_order == '2') { ?>
+                        <a href="<?= base_url('pesanan_saya/diambil/' . $detail['transaksi']->id_transaksi) ?>" class="site-btn mt-3 mb-3">Ambil Pesanan</a>
+                    <?php } ?>
                 </div>
             </div>
             <?php

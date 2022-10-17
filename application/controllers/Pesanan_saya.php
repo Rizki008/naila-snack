@@ -121,10 +121,20 @@ class Pesanan_saya extends CI_Controller
     {
         $data = array(
             'id_transaksi' => $id_transaksi,
-            'status_order' => 4
+            'status_order' => 5
         );
         $this->m_pesanan_masuk->update_order($data);
         $this->session->set_flashdata('pesan', 'Pesanan Telah Dibatalkan');
-        redirect('pesanan_saya');
+        redirect('pesanan_saya/detail_pesanan/' . $id_transaksi);
+    }
+    public function diambil($id_transaksi)
+    {
+        $data = array(
+            'id_transaksi' => $id_transaksi,
+            'status_order' => 3
+        );
+        $this->m_pesanan_masuk->update_order($data);
+        $this->session->set_flashdata('pesan', 'Pesanan Akan Diambil');
+        redirect('pesanan_saya/detail_pesanan/' . $id_transaksi);
     }
 }
