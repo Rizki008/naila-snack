@@ -22,7 +22,7 @@ class Pesanan_saya extends CI_Controller
         $this->load->view('frontend/v_wrapper', $data, FALSE);
     }
 
-    public function bayar($id)
+    public function bayar($no_order)
     {
         $this->form_validation->set_rules('nama_bank', 'Nama Bank', 'required', array('required' => '%s Mohon Untuk Diisi !!!'));
         if ($this->form_validation->run() == TRUE) {
@@ -33,7 +33,7 @@ class Pesanan_saya extends CI_Controller
             $field_name = "bukti_bayar";
             if (!$this->upload->do_upload($field_name)) {
                 $data = array(
-                    'detail' => $this->m_transaksi->detail_pesanan($id),
+                    'detail' => $this->m_transaksi->detail_pesanan($no_order),
                     'error' => $this->upload->display_errors(),
                     'isi' =>  'frontend/cart/v_detail_pesanan_selesai'
                 );
@@ -49,20 +49,20 @@ class Pesanan_saya extends CI_Controller
                     'status_order' => '1',
                     'bukti_bayar' => $upload_data['uploads']['file_name'],
                 );
-                $this->m_transaksi->bayar($id, $data);
+                $this->m_transaksi->bayar($no_order, $data);
                 $this->session->set_flashdata('success', 'Data Bukti Pembayaran Berhasil Dikirim!');
-                redirect('pesanan_saya/detail_pesanan/' . $id);
+                redirect('pesanan_saya/detail_pesanan/' . $no_order);
             }
         }
         $data = array(
-            'detail' => $this->m_transaksi->detail_pesanan($id),
+            'detail' => $this->m_transaksi->detail_pesanan($no_order),
             'isi' =>  'frontend/cart/v_detail_pesanan_selesai'
         );
         $this->load->view('frontend/v_wrapper', $data, FALSE);
     }
 
 
-    public function diterima($id)
+    public function diterima($no_order)
     {
         $id_pelanggan = $this->input->post('pelanggan');
         $pelanggan = $this->m_pesanan_masuk->pelanggan($id_pelanggan);
@@ -86,26 +86,26 @@ class Pesanan_saya extends CI_Controller
         $status_order = array(
             'status_order' => '4'
         );
-        $this->db->where('id_transaksi', $id);
+        $this->db->where('no_order', $no_order);
         $this->db->update('transaksi', $status_order);
         $this->session->set_flashdata('success', 'Pesanan Sudah Diterima');
-        redirect('pesanan_saya/detail_pesanan/' . $id);
+        redirect('pesanan_saya');
     }
 
     //pemesanan selesai deteail & review produk
-    public function detail_pesanan($id)
+    public function detail_pesanan($no_order)
     {
         $data = array(
             'title' => 'Detail Pesanan',
             'produk' => $this->m_home->produk(),
-            'detail' => $this->m_transaksi->detail_pesanan($id),
+            'detail' => $this->m_transaksi->detail_pesanan($no_order),
             'isi' =>  'frontend/cart/v_detail_pesanan_selesai'
         );
         $this->load->view('frontend/v_wrapper', $data, FALSE);
     }
 
 
-    public function rating($id)
+    public function rating($no_order)
     {
         $data = array(
             'id_penilaian' => $this->input->post('id'),
@@ -114,7 +114,7 @@ class Pesanan_saya extends CI_Controller
         );
         $this->db->where('id_penilaian', $data['id_penilaian']);
         $this->db->update('riview', $data);
-        redirect('pesanan_saya/detail_pesanan/' . $id);
+        redirect('pesanan_saya/detail_pesanan/' . $no_order);
     }
 
     public function dibatalkan($id_transaksi)
