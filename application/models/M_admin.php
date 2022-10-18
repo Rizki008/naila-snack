@@ -123,6 +123,27 @@ class M_admin extends CI_Model
     {
         return $this->db->query("SELECT SUM(qty), transaksi.nama_lengkap, transaksi.grand_total FROM `transaksi` JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan JOIN rinci_transaksi ON transaksi.no_order=rinci_transaksi.no_order GROUP BY pelanggan.id_pelanggan ORDER BY transaksi.grand_total DESC")->result();;
     }
+
+    public function history()
+    {
+        return $this->db->query("SELECT * FROM pelanggan JOIN transaksi ON pelanggan.id_pelanggan=transaksi.id_pelanggan JOIN rinci_transaksi ON transaksi.no_order=rinci_transaksi.no_order GROUP BY transaksi.id_pelanggan ORDER BY transaksi.id_pelanggan DESC;")->result();
+    }
+    public function history_belanja($id_pelanggan)
+    {
+        return $this->db->query("SELECT SUM(grand_total) as total_belanja FROM `transaksi` JOIN pelanggan on transaksi.id_pelanggan=pelanggan.id_pelanggan WHERE transaksi.id_pelanggan='" . $id_pelanggan . "'")->result();
+    }
+
+    public function history_detail($id_pelanggan)
+    {
+        $this->db->select('*');
+        $this->db->from('pelanggan');
+        $this->db->join('transaksi', 'pelanggan.id_pelanggan = transaksi.id_pelanggan', 'left');
+        $this->db->join('rinci_transaksi', 'transaksi.no_order = rinci_transaksi.no_order', 'left');
+        $this->db->join('produk', 'rinci_transaksi.id_produk = produk.id_produk', 'left');
+        $this->db->join('riview', 'rinci_transaksi.id_rinci = riview.id_rinci', 'left');
+        $this->db->where('pelanggan.id_pelanggan', $id_pelanggan);
+        return $this->db->get()->result();
+    }
 }
 
 /* End of file M_admin.php */

@@ -125,6 +125,18 @@
 						</p>
 					</a>
 				</li>
+				<li class="nav-item">
+					<a href="<?= base_url('history') ?>" class="nav-link <?php if (
+																				$this->uri->segment(1) == 'history'
+																			) {
+																				echo "active";
+																			} ?>">
+						<i class="nav-icon fas fa-address-book"></i>
+						<p>
+							Master Data Pelanggan
+						</p>
+					</a>
+				</li>
 				<li class="nav-item has-treeview">
 					<a href="#" class="nav-link">
 						<i class="nav-icon fas fa-chart-bar"></i>
