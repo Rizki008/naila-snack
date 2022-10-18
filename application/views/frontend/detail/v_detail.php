@@ -45,7 +45,7 @@
 <!-- Hero Section End -->
 
 <!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="<?= base_url() ?>ogani-master/img/breadcrumb.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="<?= base_url() ?>ogani-master/img/breadcrumb1.jpeg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -171,50 +171,50 @@
                         </div> -->
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="product__details__tab__desc">
-                            <?php
-							foreach ($detail['review'] as $key => $value) {
-							?>
-								<h6><?= $value->nama_lengkap ?></h6>
+                                <?php
+                                foreach ($detail['review'] as $key => $value) {
+                                ?>
+                                    <h6><?= $value->nama_lengkap ?></h6>
 
-								<div> <?php
-										if ($value->info_penilaian == 5) {
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-										} else if ($value->info_penilaian == 4) {
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star-o fa-2x"  aria-hidden="true"></i>';
-										} else if ($value->info_penilaian == 3) {
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star-o fa-2x"  aria-hidden="true"></i>';
-											echo '<i class="fa fa-star-o fa-2x"  aria-hidden="true"></i>';
-										} else if ($value->info_penilaian == 2) {
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
-										} else if ($value->info_penilaian == 1) {
-											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
-											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
-										}
-										?></div>
-								<h5><span class="badge badge-warning"><?= $value->tanggal ?></span></h5>
-								<p><?= $value->review ?></p>
-								<hr>
-							<?php
-							}
-							?>
+                                    <div> <?php
+                                            if ($value->info_penilaian == 5) {
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                            } else if ($value->info_penilaian == 4) {
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star-o fa-2x"  aria-hidden="true"></i>';
+                                            } else if ($value->info_penilaian == 3) {
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star-o fa-2x"  aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star-o fa-2x"  aria-hidden="true"></i>';
+                                            } else if ($value->info_penilaian == 2) {
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+                                            } else if ($value->info_penilaian == 1) {
+                                                echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+                                                echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+                                            }
+                                            ?></div>
+                                    <h5><span class="badge badge-warning"><?= $value->tanggal ?></span></h5>
+                                    <p><?= $value->review ?></p>
+                                    <hr>
+                                <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
