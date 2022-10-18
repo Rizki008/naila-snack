@@ -20,12 +20,7 @@ class Home extends CI_Controller
             'menu' => $this->m_home->menu_paket(),
             'diskon' => $this->m_home->diskon(),
             'lates' => $this->m_home->produk_lates(),
-
-
-            // 'produk' => $this->m_home->produk(),
-            // 'produk_baru' => $this->m_home->produk_baru(),
-            // 'produk_bagus' => $this->m_home->produk_bagus(),
-            // 'diskon' => $this->m_home->diskon(),
+            'rating' => $this->m_home->produk_rating(),
             'ketegori' => $this->m_master_produk->kategori(),
             'isi' => 'v_home'
         );
@@ -37,6 +32,7 @@ class Home extends CI_Controller
         $data = array(
             'title' => 'Detail Produk',
             'data' => $this->m_home->detail_produk($id),
+            'detail' => $this->m_home->detail_produk($id),
             'gambar' => $this->m_home->gambar_produk($id),
             'related_produk' => $this->m_home->related_produk($id),
             'isi' => 'frontend/detail/v_detail'

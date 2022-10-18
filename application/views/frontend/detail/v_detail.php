@@ -138,7 +138,7 @@
                             <!-- <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab" aria-selected="false">Information</a> -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab" aria-selected="false">Reviews <span>(1)</span></a>
+                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab" aria-selected="false">Reviews <span></span></a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -171,18 +171,50 @@
                         </div> -->
                         <div class="tab-pane" id="tabs-3" role="tabpanel">
                             <div class="product__details__tab__desc">
-                                <h6>Products Infomation</h6>
-                                <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                    Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus.
-                                    Vivamus suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam
-                                    sit amet quam vehicula elementum sed sit amet dui. Donec rutrum congue leo
-                                    eget malesuada. Vivamus suscipit tortor eget felis porttitor volutpat.
-                                    Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Praesent
-                                    sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ac
-                                    diam sit amet quam vehicula elementum sed sit amet dui. Vestibulum ante
-                                    ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                                    Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-                                    Proin eget tortor risus.</p>
+                            <?php
+							foreach ($detail['review'] as $key => $value) {
+							?>
+								<h6><?= $value->nama_lengkap ?></h6>
+
+								<div> <?php
+										if ($value->info_penilaian == 5) {
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+										} else if ($value->info_penilaian == 4) {
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star-o fa-2x"  aria-hidden="true"></i>';
+										} else if ($value->info_penilaian == 3) {
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star-o fa-2x"  aria-hidden="true"></i>';
+											echo '<i class="fa fa-star-o fa-2x"  aria-hidden="true"></i>';
+										} else if ($value->info_penilaian == 2) {
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+										} else if ($value->info_penilaian == 1) {
+											echo '<i class="fa fa-star fa-2x text-warning" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+											echo '<i class="fa fa-star-o fa-2x" aria-hidden="true"></i>';
+										}
+										?></div>
+								<h5><span class="badge badge-warning"><?= $value->tanggal ?></span></h5>
+								<p><?= $value->review ?></p>
+								<hr>
+							<?php
+							}
+							?>
                             </div>
                         </div>
                     </div>

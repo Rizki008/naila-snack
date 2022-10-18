@@ -25,8 +25,8 @@ class M_home extends CI_Model
 
     public function detail_produk($id)
     {
-        $data['size'] = $this->db->query("SELECT * FROM produk JOIN kategori ON produk.id_kategori=kategori.id_kategori JOIN diskon ON produk.id_produk=diskon.id_produk WHERE produk.id_produk='" . $id . "'")->result();
-        $data['produk'] = $this->db->query("SELECT * FROM produk JOIN kategori ON produk.id_kategori=kategori.id_kategori JOIN diskon ON produk.id_produk=diskon.id_produk WHERE produk.id_produk='" . $id . "'")->row();
+        $data['produk'] = $this->db->query("SELECT * FROM `produk` JOIN diskon ON produk.id_produk = diskon.id_produk WHERE produk.id_produk='" . $id . "'")->row();
+        $data['review'] = $this->db->query("SELECT * FROM `rinci_transaksi` JOIN riview ON rinci_transaksi.id_rinci=riview.id_rinci JOIN transaksi ON transaksi.no_order=rinci_transaksi.no_order JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan WHERE id_produk='" . $id . "' AND info_penilaian != 0")->result();
         return $data;
     }
     public function gambar_produk($id)
@@ -138,7 +138,7 @@ class M_home extends CI_Model
         if ($this->session->userdata('level_member') == '') {
             $data['paket'] = $this->db->query("SELECT * FROM `produk` JOIN diskon ON produk.id_produk = diskon.id_produk WHERE diskon.member='3'")->result();
         } else {
-            $data['paket'] = $this->db->query("SELECT * FROM `produk` JOIN diskon ON produk.id_produk = diskon.id_produk WHERE diskon.member='" . $this->session->userdata('member') . "'")->result();
+            $data['paket'] = $this->db->query("SELECT * FROM `produk` JOIN diskon ON produk.id_produk = diskon.id_produk WHERE diskon.member='" . $this->session->userdata('level_member') . "'")->result();
         }
         return $data;
     }
@@ -150,5 +150,9 @@ class M_home extends CI_Model
             $data['paket'] = $this->db->query("SELECT * FROM `produk` JOIN diskon ON produk.id_produk = diskon.id_produk WHERE diskon.member='" . $this->session->userdata('member') . "'")->result();
         }
         return $data;
+    }
+    public function produk_rating()
+    {
+        return $this->db->query("SELECT round(SUM(info_penilaian) / COUNT(info_penilaian)) as jml , rinci_transaksi.id_rinci, produk.id_produk, images, nama_produk, harga, diskon, stock, diskon.id_diskon FROM riview JOIN rinci_transaksi ON rinci_transaksi.id_rinci=riview.id_rinci JOIN produk ON produk.id_produk=rinci_transaksi.id_produk JOIN diskon ON produk.id_produk=diskon.id_produk WHERE info_penilaian !='0'  GROUP BY rinci_transaksi.id_produk ORDER BY jml DESC limit 5")->result();
     }
 }

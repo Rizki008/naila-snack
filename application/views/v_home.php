@@ -70,20 +70,100 @@
     </div>
 </section>
 <!-- Categories Section End -->
+<section class="featured spad">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="section-title">
+					<h2>Product Unggulan</h2>
+				</div>
+				<div class="featured__controls">
+					<ul>
+						<li class="active" data-filter="*">All</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row featured__filter">
+			<?php
+			$ranking = 1;
+			foreach ($rating as $key => $value) {
+			?>
 
+				<div class="col-lg-3 col-md-4 col-sm-6 mix terbaik">
+					<form action="<?= base_url('belanja/add') ?>" method="POST">
+						<input type="hidden" name="id" value="<?= $value->id_produk ?>">
+						<input type="hidden" name="id_diskon" value="<?= $value->id_diskon ?>">
+						<input type="hidden" name="name" value="<?= $value->nama_produk ?>">
+						<input type="hidden" name="price" value="<?= $value->harga - ($value->diskon / 100 * $value->harga) ?>">
+						<input type="hidden" name="qty" value="1">
+						<input type="hidden" name="images" value="<?= $value->images ?>">
+						<input type="hidden" name="stock" value="<?= $value->stock ?>">
+						<div class="featured__item">
+							<div class="categories__item set-bg" data-setbg="<?= base_url('assets/produk/' . $value->images) ?>">
+								<h5><a href="#"><?= $ranking++ ?></a></h5>
+							</div>
+							<div class="featured__item__text">
+								<?php
+								if ($value->jml == 5) {
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+								} else if ($value->jml == 4) {
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+								} else if ($value->jml == 3) {
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+								} else if ($value->jml == 2) {
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+								} else if ($value->jml == 1) {
+									echo '<i class="fa fa-star text-warning" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+									echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+								}
+								?>
+								<h6><a href="<?= base_url('home/detail_produk/' . $value->id_produk) ?>"><?= $value->nama_produk ?></a></h6>
+								<h5>Rp. <?= number_format($value->harga - ($value->diskon / 100 * $value->harga)) ?></h5>
+								<button type="submit" class="site-btn"><i class="fa fa-shopping-cart"></i></button>
+							</div>
+						</div>
+					</form>
+				</div>
+			<?php
+			}
+			?>
+		</div>
+	</div>
+</section>
 <!-- Featured Section Begin -->
 <section class="featured spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Featured Product</h2>
+                    <h2>Produk Diskon</h2>
                 </div>
             </div>
         </div>
         <div class="row featured__filter">
             <?php
             foreach ($menu['paket'] as $key => $value) {
+                if ($value->diskon != 0) {
             ?>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                     <?php
@@ -100,9 +180,7 @@
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="<?= base_url('assets/produk/' . $value->images) ?>">
                             <ul class="featured__item__pic__hover">
-                                <!-- <li><a href="#"><i class="fa fa-heart"></i></a></li> -->
                                 <li><a href="<?= base_url('home/detail_produk/' . $value->id_produk) ?>"><i class="fa fa-retweet"></i></a></li>
-                                <!-- <li><a href="<?= base_url('belanja/add') ?>"><i class="fa fa-shopping-cart"></i></a></li> -->
                                 <li><button type="submit" class="btn btn-warning"><i class="fa fa-shopping-cart"></i></button></li>
                             </ul>
                         </div>
@@ -113,7 +191,8 @@
                     </div>
                     <?php echo form_close() ?>
                 </div>
-            <?php } ?>
+            <?php }
+            } ?>
         </div>
     </div>
 </section>
