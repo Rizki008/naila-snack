@@ -84,7 +84,7 @@
                     if ($detail['transaksi']->status_order == '3') {
                     ?>
                         <p>Silahkan konfirmasi pesanan jika pesanan telah diterima!</p>
-                        <?php echo form_open('pesanan_saya/diterima/' . $detail['transaksi']->id_transaksi); ?>
+                        <?php echo form_open('pesanan_saya/diterima/' . $detail['transaksi']->no_order); ?>
                         <input type="hidden" name="pelanggan" value="<?= $detail['transaksi']->id_pelanggan ?>">
                         <input type="hidden" name="total_belanja" value="<?= $detail['transaksi']->grand_total ?>">
                         <?php
@@ -135,7 +135,7 @@
                     ?>
                 </div>
                 <div class="col-lg-6">
-                    <?php if ($detail['transaksi']->status_order == '2') { ?>
+                    <?php if ($detail['transaksi']->status_order == '2' and $detail['transaksi']->pembayaran == '1') { ?>
                         <a href="<?= base_url('pesanan_saya/diambil/' . $detail['transaksi']->id_transaksi) ?>" class="site-btn mt-3 mb-3">Ambil Pesanan</a>
                     <?php } ?>
                 </div>
@@ -164,8 +164,6 @@
                                     <?php
                                     }
                                     ?>
-
-
                                 <?php
                                 }
                                 ?>

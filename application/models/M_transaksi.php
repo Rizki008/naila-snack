@@ -107,10 +107,10 @@ class M_transaksi extends CI_Model
         return $this->db->get()->row();
     }
 
-    public function detail_pesanan($id)
+    public function detail_pesanan($no_order)
     {
-        $data['transaksi'] = $this->db->query("SELECT * FROM transaksi JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan  WHERE transaksi.id_transaksi='" . $id . "'")->row();
-        $data['pesanan'] = $this->db->query("SELECT * FROM rinci_transaksi JOIN transaksi ON rinci_transaksi.no_order=transaksi.no_order JOIN produk ON produk.id_produk=rinci_transaksi.id_produk JOIN diskon ON produk.id_produk=diskon.id_produk JOIN riview ON rinci_transaksi.id_rinci = riview.id_rinci WHERE transaksi.id_transaksi='" . $id . "' GROUP BY transaksi.id_transaksi")->result();
+        $data['transaksi'] = $this->db->query("SELECT * FROM transaksi JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan  WHERE transaksi.id_transaksi='" . $no_order . "'")->row();
+        $data['pesanan'] = $this->db->query("SELECT * FROM rinci_transaksi JOIN transaksi ON rinci_transaksi.no_order=transaksi.no_order JOIN produk ON produk.id_produk=rinci_transaksi.id_produk JOIN diskon ON produk.id_produk=diskon.id_produk JOIN riview ON rinci_transaksi.id_rinci = riview.id_rinci WHERE transaksi.id_transaksi='" . $no_order . "' GROUP BY rinci_transaksi.id_produk")->result();
         return $data;
     }
 
