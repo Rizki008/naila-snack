@@ -122,11 +122,11 @@ class Belanja extends CI_Controller
             $kstok = 0;
             foreach ($this->cart->contents() as $key => $value) {
                 $id = $value['id'];
-                $kstok = $value['stok'] - $value['qty'];
+                $kstok = $value['stock'] - $value['qty'];
                 $data = array(
                     'stock' => $kstok
                 );
-                $this->m_transaksi->stok($id, $data);
+                $this->m_transaksi->menguarangi_stok($id, $data);
             }
             $this->session->set_flashdata('pesan', 'Pesanan Diproses');
             $this->cart->destroy();
