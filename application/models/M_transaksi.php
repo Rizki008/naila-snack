@@ -15,6 +15,12 @@ class M_transaksi extends CI_Model
         $this->db->insert('rinci_transaksi', $data_rinci);
     }
 
+    public function menguarangi_stok($id, $data)
+    {
+        $this->db->where('id_produk', $id);
+        $this->db->update('produk', $data);
+    }
+
     public function upload_buktibayar($data)
     {
         $this->db->where('id_transaksi', $data['id_transaksi']);
