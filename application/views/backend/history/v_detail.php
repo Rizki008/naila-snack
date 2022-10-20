@@ -102,13 +102,19 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>Total Belanja</th>
+						<th>Kategori Produk</th>
+						<th>Nama Produk</th>
+						<th>Qty</th>
+						<th>Total Harga</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php
 					foreach ($history_belanja as $key => $value) { ?>
 						<tr>
+							<td><?= $value->nama_kategori ?></td>
+							<td><?= $value->nama_produk ?></td>
+							<td><?= $value->jml_qty ?></td>
 							<td>Rp. <?= number_format($value->total_belanja, 0) ?></td>
 						</tr>
 					<?php } ?>

@@ -130,7 +130,7 @@ class M_admin extends CI_Model
     }
     public function history_belanja($id_pelanggan)
     {
-        return $this->db->query("SELECT SUM(grand_total) as total_belanja FROM `transaksi` JOIN pelanggan on transaksi.id_pelanggan=pelanggan.id_pelanggan WHERE transaksi.id_pelanggan='" . $id_pelanggan . "'")->result();
+        return $this->db->query("SELECT *, SUM(grand_total) as total_belanja, SUM(qty) AS jml_qty FROM `transaksi` JOIN pelanggan on transaksi.id_pelanggan=pelanggan.id_pelanggan JOIN rinci_transaksi ON transaksi.no_order=rinci_transaksi.no_order JOIN produk ON rinci_transaksi.id_produk=produk.id_produk JOIN kategori ON produk.id_kategori=kategori.id_kategori WHERE transaksi.id_pelanggan='" . $id_pelanggan . "' GROUP BY produk.id_produk ORDER BY qty")->result();
     }
 
     public function history_detail($id_pelanggan)
